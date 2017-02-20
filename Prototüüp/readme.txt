@@ -1,3 +1,4 @@
-Prototüübi muutmiseks peab olema alla laetud https://www.justinmind.com/
-Prototüüp on interaktiivne.
-Prototüüp on võimalik teha html failiks, siis on selle vaatamiseks vaid pluginat vaja.
+PrototÃ¼Ã¼bi muutmiseks peab olema alla laetud https://www.justinmind.com/
+PrototÃ¼Ã¼p on interaktiivne.
+PrototÃ¼Ã¼p on vÃµimalik teha html failiks, siis on selle vaatamiseks vaid pluginat vaja.
+Lisame vikisse ka pildid prototÃ¼Ã¼bist.
