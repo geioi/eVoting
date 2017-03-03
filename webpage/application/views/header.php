@@ -18,9 +18,9 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="<?php echo base_url(); ?>index.php/welcome">Avaleht</a></li>
       <li><a href="<?php echo base_url(); ?>index.php/kandidaadid">Kandidaadid</a></li>
-      <li><a href="#">Hääleta</a></li>
-      <li><a href="#">Kandideeri</a></li>
-	  <li><a href="#">Tulemused</a></li>
+      <li><a href="<?php echo base_url(); ?>index.php/hääleta">Hääleta</a></li>
+      <li><a href="<?php echo base_url(); ?>index.php/kandideeri">Kandideeri</a></li>
+	  <li><a href="<?php echo base_url(); ?>index.php/tulemused">Tulemused</a></li>
     </ul>
         <ul class="nav navbar-nav navbar-right">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
