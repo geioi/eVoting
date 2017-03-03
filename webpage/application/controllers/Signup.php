@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Hääleta extends CI_Controller {
+class Signup extends CI_Controller {
 
 	public function index()
 	{
 		$this->load->view('header');
-		$this->load->view('hääleta');
+		$this->load->view('signup');
 	}
 }
