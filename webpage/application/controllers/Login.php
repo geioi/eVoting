@@ -5,7 +5,16 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
+		session_start();
+		if(!empty($_SESSION['message'])) {
+			$message = $_SESSION['message'];
+		}
+		else{
+			$message = 'Siin saate sisse logida';
+		}
+		
 		$this->load->view('header');
-		$this->load->view('login');
+		$data['message'] = $message;
+		$this->load->view('login', $data);
 	}
 }

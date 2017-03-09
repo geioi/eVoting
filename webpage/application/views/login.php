@@ -1,6 +1,11 @@
  
 <div class="container">
-  <p>Logi sisse siin lehel</p>
+  
+  <p><?php 
+  echo $message; 
+  unset($_SESSION['message']); ?>
+  </p>
+  
 </div>
 
 </body>

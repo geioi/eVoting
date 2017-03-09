@@ -5,7 +5,15 @@ class Haaleta extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('header');
-		$this->load->view('haaleta');
+		define("someUnguessableVariable", "anotherUnguessableVariable");
+            session_start();
+            if(!(isset($_SESSION['login']) && $_SESSION['login'] == '')){
+				$_SESSION['message'] = 'Selle funktsionaalsuse kasutamiseks peate olema sisse logitud!';
+                header ("Location: login");
+            }
+			else{
+				$this->load->view('header');
+				$this->load->view('haaleta');
+			}
 	}
 }
