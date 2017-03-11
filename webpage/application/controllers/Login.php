@@ -14,7 +14,7 @@ class Login extends CI_Controller {
 		}
 		
 		$this->load->view('header');
-		$data['message'] = $message;
-		$this->load->view('login', $data);
+		$msg['message'] = $message;
+		$this->load->view('login', $msg);
 	}
 }

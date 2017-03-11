@@ -7,12 +7,16 @@ class Kandideeri extends CI_Controller {
 	{
 		define("someUnguessableVariable", "anotherUnguessableVariable");
             session_start();
-            if(!(isset($_SESSION['login']) && $_SESSION['login'] == '')){
+			
+			$_SESSION['prev_loc'] = 'kandideeri';
+			
+            if(!(isset($_SESSION['login']) && $_SESSION['login'])){
+			//if (!($this->session->userdata('login'))) {
 				$_SESSION['message'] = 'Selle funktsionaalsuse kasutamiseks peate olema sisse logitud!';
                 header ("Location: login");
             }
 			else{
-				$this->load->view('header');
+				$this->load->view('loggedinheader');
 				$this->load->view('kandideeri');
 			}
 	}

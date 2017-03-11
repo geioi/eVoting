@@ -20,7 +20,18 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('header');
+		session_start();
+		
+		//holds in memory which page the user comes from when logging in
+		$_SESSION['prev_loc'] = 'welcome';
+		
+		if (!(isset($_SESSION['login']) && $_SESSION['login'])){	
+			$this->load->view('header');
+		}
+		else {
+			$this->load->view('loggedinheader');
+		}
+		
 		$this->load->view('avaleht');
 	}
 }
