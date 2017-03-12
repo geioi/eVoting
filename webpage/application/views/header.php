@@ -27,6 +27,7 @@
 	  <li><a href="<?php echo base_url(); ?>index.php/langswitch/switchLanguage/english">English</a></li>
       <li><a href="<?php echo base_url(); ?>index.php/signup"><span class="glyphicon glyphicon-user"></span> <?php echo lang("menu_signup"); ?></a></li>
       <li><a href="<?php echo base_url(); ?>index.php/login"><span class="glyphicon glyphicon-log-in"></span> <?php echo lang("menu_login"); ?></a></li>
+	  <li><a href="<?php echo base_url(); ?>index.php/fblogin"><img src="<?php echo base_url(); ?>images/fb1.png" alt="fb1" height="20" width="20" ></a></li>
     </ul>
   </div>
 </nav>

@@ -1,13 +1,14 @@
+ <title>Kandidaadid</title>
  <div class="container">
         <br>
-        <h3>Kandidaadid: </h3>
+        <h3>Kandidaadid</h3>
         <div class="table-responsive">
             <table class="table">
                 <tr>
-                    <th>Name</th>
+                    <th>Eesnimi</th>
                     <th>Perenimi</th>
-                    <th>maakond</th>
-                    <th>partei</th>
+                    <th>Maakond</th>
+                    <th>Partei</th>
                 </tr>
                 <?php foreach($complete as $kandidaat) : ?>
                     <tr>
@@ -20,6 +21,5 @@
 
             </table>
         </div>
-		</div>
 
-
+<!-- /.container -->

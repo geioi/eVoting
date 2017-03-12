@@ -58,7 +58,6 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database');
 $autoload['libraries'] = array('session', 'database');
 /*
 | -------------------------------------------------------------------
@@ -134,4 +133,4 @@ $autoload['language'] = array('menu');
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Kandimodel');
+$autoload['model'] = array('');

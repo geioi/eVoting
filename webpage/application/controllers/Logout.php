@@ -5,8 +5,8 @@ class Logout extends CI_Controller {
 
 	public function index()
 	{
-		session_start();
-		session_destroy();
+		$this->session->unset_userdata('userData');
+        $this->session->sess_destroy();
 		
 		header ('Location: welcome');
 	}
