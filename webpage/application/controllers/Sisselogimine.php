@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Sisselogimine extends CI_Controller {
 
-	public function index() {
-		
+	public function index(){
 		session_start();
 		
 		$default_loc = 'login';
@@ -14,19 +13,21 @@ class Sisselogimine extends CI_Controller {
 		//$data['complete'] = $this->Login->getData();
 		
 		// get values from login form
-		$username = $_POST['username'];
+		$person_id = $_POST['person_id'];
 		$password = $_POST['password'];
 		
 		// to prevent mysql injection
-		$username = stripcslashes($username);
+		$person_id = stripcslashes($person_id);
 		$password = stripcslashes($password);
-		$username = mysql_real_escape_string($username);
+		$person_id = mysql_real_escape_string($person_id);
 		$password = mysql_real_escape_string($password);
 		
-		if (!empty($username) && !empty($password)){
-			if (!empty($this->Login->validateUser($username, $password))){
-				//$_SESSION['message'] = 'Tere tulemast ' .$username . '!';
-				$_SESSION['userid'] = $username;
+		if (!empty($person_id) && !empty($password)){
+			if (!empty($this->Login->validateUser($person_id, $password))){
+				//$_SESSION['message'] = 'Tere tulemast ' .$person_id . '!';
+				$nimi = $this->Login->getName($person_id);
+
+				$_SESSION['userid'] = $nimi;
 				$_SESSION['login'] = true;
 				
 				if ($prev_loc == 'signup' || $prev_loc == ''){

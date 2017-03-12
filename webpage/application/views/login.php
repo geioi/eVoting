@@ -1,6 +1,6 @@
-<title>Login</title> 
+ <title>Login</title>
 <div class="container">
-  
+
 <p>
 	<?php 
 	  echo $message; 
@@ -8,11 +8,13 @@
 	  ?>
 </p>
 	<form action="Sisselogimine" method="POST">
-		Kasutaja:<br>
-		<input type="text" id="username" name="username">
+		<label for="isikukood"> Isikukood:<br>
+		<input type="text" id="isikukood" name="person_id" value="">
+		</label>
 		<br>
-		Parool:<br>
-		<input type="password" id="password" name="password">
+		<label for="parool">Parool:<br>
+		<input type="password" id="parool" name="password" value="">
+		</label>
 		<br><br>
 		<input type="submit" value="Logi sisse">
 	</form>
