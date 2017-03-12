@@ -20,6 +20,7 @@
                 <?php endforeach ?>
 
             </table>
+		<h4>Kokku osaleb <?php echo $total;?> kandidaati</h4>
         </div>
 
 <!-- /.container -->

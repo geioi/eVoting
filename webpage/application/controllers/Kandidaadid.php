@@ -19,6 +19,7 @@ class Kandidaadid extends CI_Controller {
 		
 		$this->load->model('candidates');
 		$data['complete'] = $this->candidates->getData();
+		$data['total'] = $this->candidates->getTotalCandidates();
 		if (!isset($_SESSION['userid'])){	
 			$this->load->view('header');
 		}
