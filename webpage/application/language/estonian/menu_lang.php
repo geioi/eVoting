@@ -8,3 +8,5 @@ $lang['menu_results'] = 'Tulemused';
 $lang['menu_signup'] = 'Registreeru';
 $lang['menu_login'] = 'Logi sisse';
 $lang['menu_name'] = 'e-Hääletamine';
+$lang['menu_login'] = 'Logi sisse';
+$lang['menu_signup'] = 'Registreeru';

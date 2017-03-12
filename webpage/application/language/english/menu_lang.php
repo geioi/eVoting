@@ -8,3 +8,5 @@ $lang['menu_results'] = 'Results';
 $lang['menu_signup'] = 'Sign up';
 $lang['menu_login'] = 'Login';
 $lang['menu_name'] = 'e-Voting';
+$lang['menu_login'] = 'Login';
+$lang['menu_signup'] = 'Sign up';
