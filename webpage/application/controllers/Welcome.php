@@ -20,7 +20,9 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		session_start();
+		if(!isset($_SESSION)) { 
+        session_start(); 
+		} 
 		
 		//holds in memory which page the user comes from when logging in
 		$_SESSION['prev_loc'] = 'welcome';

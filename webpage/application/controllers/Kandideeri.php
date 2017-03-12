@@ -6,7 +6,10 @@ class Kandideeri extends CI_Controller {
 	public function index()
 	{
 		define("someUnguessableVariable", "anotherUnguessableVariable");
-            session_start();
+            
+			if(!isset($_SESSION)) { 
+			session_start(); 
+			} 
 			
 			$_SESSION['prev_loc'] = 'kandideeri';
 			
