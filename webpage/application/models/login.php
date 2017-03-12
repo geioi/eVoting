@@ -9,10 +9,20 @@ class Login extends CI_Model {
 		return $exec->result();
 	}
 	
-	public function validateUser($username, $password) {
-		$query = "SELECT id from users WHERE username = '$username' AND password = '$password'";
+	public function validateUser($person_id, $password) {
+		$query = "SELECT id from users WHERE person_id = '$person_id' AND password = '$password'";
 		$exec = $this->db->query($query);
 		return $exec->result();
+	}
+	
+	public function getName($person_id){
+		$query = "SELECT CONCAT(`users`.`firstname`,' ',`users`.`lastname`) as nimi from users WHERE person_id = '$person_id'";
+		$exec = $this->db->query($query);
+		
+		//i have no idea how to get the value without a loop...so this is my "temporary" solution
+		foreach ($exec->result() as $tulemus){
+			return $tulemus->nimi;
+		}
 	}
 }
 ?>
