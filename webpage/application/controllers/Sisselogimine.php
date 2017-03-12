@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Sisselogimine extends CI_Controller {
 
-	public function index()
-	{
+	public function index() {
+		
 		session_start();
 		
 		$default_loc = 'login';

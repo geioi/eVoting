@@ -11,7 +11,7 @@ class Tulemused extends CI_Controller {
 		
 		$_SESSION['prev_loc'] = 'tulemused';
 		
-		if (!(isset($_SESSION['login']) && $_SESSION['login'])){	
+		if (!isset($_SESSION['userid'])){	
 			$this->load->view('header');
 		}
 		else {

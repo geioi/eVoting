@@ -13,7 +13,7 @@ class Kandideeri extends CI_Controller {
 			
 			$_SESSION['prev_loc'] = 'kandideeri';
 			
-            if(!(isset($_SESSION['login']) && $_SESSION['login'])){
+            if (!isset($_SESSION['userid'])){	
 			//if (!($this->session->userdata('login'))) {
 				$_SESSION['message'] = 'Selle funktsionaalsuse kasutamiseks peate olema sisse logitud!';
                 header ("Location: login");

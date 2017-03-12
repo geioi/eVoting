@@ -13,7 +13,7 @@ class Haaleta extends CI_Controller {
 			
 			$_SESSION['prev_loc'] = 'haaleta';
 			
-            if(!(isset($_SESSION['login']) && $_SESSION['login'])){
+            if (!isset($_SESSION['userid'])){	
 				$_SESSION['message'] = 'Selle funktsionaalsuse kasutamiseks peate olema sisse logitud!';
                 header ("Location: login");
             }
@@ -21,5 +21,6 @@ class Haaleta extends CI_Controller {
 				$this->load->view('loggedinheader');
 				$this->load->view('haaleta');
 			}
+		
 	}
 }

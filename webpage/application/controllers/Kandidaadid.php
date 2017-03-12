@@ -17,25 +17,15 @@ class Kandidaadid extends CI_Controller {
 		
 		$_SESSION['prev_loc'] = 'kandidaadid';
 		
-		$this->load->model('Kandimodel');
-		$data['complete'] = $this->Kandimodel->getData();
-		$title['title'] = 'Kandidaadid';
-		if (!(isset($_SESSION['login']) && $_SESSION['login'])){	
-			$this->load->view('header',$title);
+		$this->load->model('candidates');
+		$data['complete'] = $this->candidates->getData();
+		if (!isset($_SESSION['userid'])){	
+			$this->load->view('header');
 		}
 		else {
-			$this->load->view('loggedinheader',$title);
+			$this->load->view('loggedinheader');
 		}
-		//$this->load->view('header',$title);
 		$this->load->view('kandidaadid',$data);
 
-	}
-	public function kandidaadid() {
-		$this->load->model('Kandimodel');
-		$data['complete'] = $this->Kandidaadid->getData();
-		$title['title'] = 'Kandidaadid';
-		$this->load->view('header',$title);
-		$this->load->view('kandidaadid',$data);
-		
 	}
 }

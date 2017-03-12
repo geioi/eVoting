@@ -27,7 +27,7 @@ class Welcome extends CI_Controller {
 		//holds in memory which page the user comes from when logging in
 		$_SESSION['prev_loc'] = 'welcome';
 		
-		if (!(isset($_SESSION['login']) && $_SESSION['login'])){	
+		if (!isset($_SESSION['userid'])){	
 			$this->load->view('header');
 		}
 		else {
