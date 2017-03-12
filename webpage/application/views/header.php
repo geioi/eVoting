@@ -13,16 +13,18 @@
 <nav class="navbar navbar-inherit">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/welcome">e-Hääletamine</a>
+      <a class="navbar-brand" href="<?php echo base_url(); ?>index.php/welcome"><?php echo lang("menu_name"); ?></a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="<?php echo base_url(); ?>index.php/welcome">Avaleht</a></li>
-      <li><a href="<?php echo base_url(); ?>index.php/kandidaadid">Kandidaadid</a></li>
-      <li><a href="<?php echo base_url(); ?>index.php/haaleta">Hääleta</a></li>
-      <li><a href="<?php echo base_url(); ?>index.php/kandideeri">Kandideeri</a></li>
-	  <li><a href="<?php echo base_url(); ?>index.php/tulemused">Tulemused</a></li>
+      <li class="active"><a href="<?php echo base_url(); ?>index.php/welcome"><?php echo lang("menu_main"); ?></a></li>
+      <li><a href="<?php echo base_url(); ?>index.php/kandidaadid"><?php echo lang("menu_candidates"); ?></a></li>
+      <li><a href="<?php echo base_url(); ?>index.php/haaleta"><?php echo lang("menu_vote"); ?></a></li>
+      <li><a href="<?php echo base_url(); ?>index.php/kandideeri"><?php echo lang("menu_candidacy"); ?></a></li>
+	  <li><a href="<?php echo base_url(); ?>index.php/tulemused"><?php echo lang("menu_results"); ?></a></li>
     </ul>
         <ul class="nav navbar-nav navbar-right">
+	  <li><a href='<?php echo $base_url; ?>langswitch/switchLanguage/estonian'>Eesti</a></li>
+	  <li><a href='<?php echo $base_url; ?>langswitch/switchLanguage/english'>English</a></li>
       <li><a href="<?php echo base_url(); ?>index.php/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="<?php echo base_url(); ?>index.php/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
