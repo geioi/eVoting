@@ -21,5 +21,12 @@ class Registreeri extends CI_Model {
 		}
 		return false;
 	}
+	
+	public function registreeri($email, $firstname, $lastname, $person_id, $password, $birthdate, $gender){
+		$query = "CALL Register_User('$email', '$firstname', '$lastname', '$person_id', '$password', '$birthdate', '$gender')";
+		$exec = $this->db->query($query);
+		
+		return;
+	}
 }
 ?>

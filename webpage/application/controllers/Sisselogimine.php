@@ -21,6 +21,7 @@ class Sisselogimine extends CI_Controller {
 		$password = stripcslashes($password);
 		$person_id = mysql_real_escape_string($person_id);
 		$password = mysql_real_escape_string($password);
+		$password = hash('sha512', $password);
 		
 		if (!empty($person_id) && !empty($password)){
 			if (!empty($this->Login->validateUser($person_id, $password))){

@@ -50,6 +50,8 @@ class Register extends CI_Controller {
 				$gender = $_POST['sugu'];
 			}
 			
+			$uus_kasutaja = $this->Registreeri->registreeri($email, $firstname, $lastname, $person_id, $password, $birthdate, $gender);
+			
 			$_SESSION['message'] = 'Registreerumine õnnestus!';
 		}
 		
