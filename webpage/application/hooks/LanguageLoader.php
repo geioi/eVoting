@@ -9,7 +9,7 @@ class LanguageLoader
         if ($site_lang) {
             $ci->lang->load('menu', $ci->session->userdata('site_lang'));
         } else {
-            $ci->lang->load('menu', 'english');
+            $ci->lang->load('menu', 'estonian');
         }
     }
 }
