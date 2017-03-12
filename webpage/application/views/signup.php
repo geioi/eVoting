@@ -29,17 +29,18 @@
 		<input type="password" name="parool_uuesti" id="parool_uuesti" required>
 		</label><br><br>
 		<fieldset>
-		<label for="synnikuupaev">Sünnikuupäev (DD/MM/YYYY):<br>
-		<input type="text" name="date" id="synnikuupaev" size="3" required>
-		<input type="text" name="month" id="synnikuupaev" size="3" required>
-		<input type="text" name="year" id="synnikuupaev" size="6" required>
-		</label></label></label>
+		<label for="kuupaev"><label for="kuupaev1"><label for="kuupaev2">Sünnikuupäev (DD/MM/YYYY):<br>
+		<input type="text" name="date" id="kuupaev" size="3" required></label>
+		<input type="text" name="month" id="kuupaev1" size="3" required></label>
+		<input type="text" name="year" id="kuupaev2" size="6" required>
+		</label>
 		</fieldset><br><br>
 		<fieldset>
-		<label for="sugu">Sugu:<br>
-		<input type="radio" name="sugu" id="sugu" value="Mees"> Mees
-		<input type="radio" name="sugu" id="sugu" value="Naine"> Naine
-		<input type="radio" name="sugu" id="sugu" value="Muu"> Muu: <input type="text" name="sugu_muu" id="sugu_muu" size="14">
+		<label for="sugu_muu"><label for="sugu"><label for="sugu1"><label for="sugu2">Sugu:<br>
+		<input type="radio" name="sugu" id="sugu" value="Mees"> Mees</label>
+		<input type="radio" name="sugu" id="sugu1" value="Naine"> Naine</label>
+		<input type="radio" name="sugu" id="sugu2" value="Muu"> Muu</label>: 
+		<input type="text" name="sugu_muu" id="sugu_muu" size="14">
 	</label>
 	</fieldset><br><br>
 	<input type="submit" name="submit" value="Registreeri">
