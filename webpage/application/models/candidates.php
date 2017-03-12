@@ -8,5 +8,11 @@ class candidates extends CI_Model {
 		$exec = $this->db->query($query);
 		return $exec->result();
 	}
+	
+	public function getTotalCandidates() {
+		$result = $this->db->query("SELECT * FROM kandidaadid");
+		return $result -> num_rows();
+	}
+
 }
 ?>
