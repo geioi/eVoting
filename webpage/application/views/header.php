@@ -23,8 +23,8 @@
 	  <li><a href="<?php echo base_url(); ?>index.php/tulemused"><?php echo lang("menu_results"); ?></a></li>
     </ul>
         <ul class="nav navbar-nav navbar-right">
-	  <li><a href='<?php echo $base_url; ?>index.php/langswitch/switchLanguage/estonian'>Eesti</a></li>
-	  <li><a href='<?php echo $base_url; ?>index.php/langswitch/switchLanguage/english'>English</a></li>
+	  <li><a href="<?php echo base_url(); ?>index.php/langswitch/switchLanguage/estonian">Eesti</a></li>
+	  <li><a href="<?php echo base_url(); ?>index.php/langswitch/switchLanguage/english">English</a></li>
       <li><a href="<?php echo base_url(); ?>index.php/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
       <li><a href="<?php echo base_url(); ?>index.php/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
