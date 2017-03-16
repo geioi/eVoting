@@ -19,7 +19,8 @@ class Welcome extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index()
-	{
+	
+	{	
 		if(!isset($_SESSION)) { 
         session_start(); 
 		} 
@@ -34,6 +35,22 @@ class Welcome extends CI_Controller {
 			$this->load->view('loggedinheader');
 		}
 		
-		$this->load->view('avaleht');
+		//mapsi jaoks vajalik
+		$this->load->library('googlemaps');
+		$config['center'] = '58.379, 26.715';
+		$config['zoom'] = 'auto';
+		$this->googlemaps->initialize($config);
+		
+		$marker = array();
+		$marker['position'] = '58.37824850000001, 26.71467329999996';
+		$this->googlemaps->add_marker($marker);
+		
+		$marker = array();
+		$marker['position'] = '58.3812369, 26.72069970000007';
+		$this->googlemaps->add_marker($marker);
+		
+		$data['map'] = $this->googlemaps->create_map();
+		
+		$this->load->view('avaleht',$data);
 	}
 }
