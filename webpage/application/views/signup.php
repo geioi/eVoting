@@ -6,9 +6,7 @@
 			unset($_SESSION['message']);
 		?>
 	</p>
-</div>
 
-<div align="center">
 <form name="registreeri" method="POST" action="Register">
 		<label for="email">Email:<br>
 		<input type="email" name="email" id="email" required>
@@ -29,18 +27,19 @@
 		<input type="password" name="parool_uuesti" id="parool_uuesti" required>
 		</label><br><br>
 		<fieldset>
-		<label for="synnikuupaev">Sünnikuupäev (DD/MM/YYYY):<br>
+		<label for="synnikuupaev">Sünnikuupäev (DD /</label>
+		<label for="sünnikuupaev">MM /</label>
+		<label for="sünnikuupäev">YYYY)</label><br>
 		<input type="text" name="date" id="synnikuupaev" size="3" required>
-		<input type="text" name="month" id="synnikuupaev" size="3" required>
-		<input type="text" name="year" id="synnikuupaev" size="6" required>
-		</label></label></label>
-		</fieldset><br><br>
+		<input type="text" name="month" id="sünnikuupaev" size="3" required>
+		<input type="text" name="year" id="sünnikuupäev" size="6" required>
+		</fieldset><br>
 		<fieldset>
-		<label for="sugu">Sugu:<br>
-		<input type="radio" name="sugu" id="sugu" value="Mees"> Mees
-		<input type="radio" name="sugu" id="sugu" value="Naine"> Naine
-		<input type="radio" name="sugu" id="sugu" value="Muu"> Muu: <input type="text" name="sugu_muu" id="sugu_muu" size="14">
-	</label>
+		<label>Sugu:</label><br>
+		<input type="radio" name="sugu" id="sugu_mees" value="Mees"> <label for="sugu_mees">Mees</label>
+		<input type="radio" name="sugu" id="sugu_naine" value="Naine"> <label for="sugu_naine">Naine</label>
+		<input type="radio" name="sugu" id="sugu" value="Muu"> <label for="sugu">Muu</label>
+		<label for="sugu_muu">:</label><input type="text" name="sugu_muu" id="sugu_muu" size="14">
 	</fieldset><br><br>
 	<input type="submit" name="submit" value="Registreeri">
 </form>
