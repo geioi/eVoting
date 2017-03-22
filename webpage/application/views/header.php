@@ -7,6 +7,7 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>bootstrap/css/bootstrap.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/tooltip.js"></script>
 </head>
 <body>
 
@@ -25,7 +26,7 @@
         <ul class="nav navbar-nav navbar-right">
 	  <li><a href="<?php echo base_url(); ?>index.php/langswitch/switchLanguage/estonian">Eesti</a></li>
 	  <li><a href="<?php echo base_url(); ?>index.php/langswitch/switchLanguage/english">English</a></li>
-      <li><a href="<?php echo base_url(); ?>index.php/signup"><span class="glyphicon glyphicon-user"></span> <?php echo lang("menu_signup"); ?></a></li>
+      <li><a href="<?php echo base_url(); ?>index.php/signup" data-toggle="tooltip" data-placement="bottom" title="Registreeru, et hääletada ja kandideerida!"><span class="glyphicon glyphicon-user"></span> <?php echo lang("menu_signup"); ?></a></li>
       <li><a href="<?php echo base_url(); ?>index.php/login"><span class="glyphicon glyphicon-log-in"></span> <?php echo lang("menu_login"); ?></a></li>
 	  <li><a href="<?php echo base_url(); ?>index.php/fblogin"><img src="<?php echo base_url(); ?>images/fb1.png" alt="fb1" height="20" width="20" ></a></li>
     </ul>
