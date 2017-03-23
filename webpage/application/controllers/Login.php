@@ -22,7 +22,9 @@ class Login extends CI_Controller {
 			$message = 'Siin saate sisse logida';
 		}
 		
-		$this->load->view('header');
+		$title['title'] = lang('title_login');
+		
+		$this->load->view('header',$title);
 		$msg['message'] = $message;
 		$this->load->view('login', $msg);
 	}

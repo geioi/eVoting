@@ -16,15 +16,16 @@ class Kandidaadid extends CI_Controller {
 		} 
 		
 		$_SESSION['prev_loc'] = 'kandidaadid';
+		$title['title'] = lang('title_candidates');
 		
 		$this->load->model('candidates');
 		$data['complete'] = $this->candidates->getData();
 		$data['total'] = $this->candidates->getTotalCandidates();
 		if (!isset($_SESSION['userid'])){	
-			$this->load->view('header');
+			$this->load->view('header',$title);
 		}
 		else {
-			$this->load->view('loggedinheader');
+			$this->load->view('loggedinheader',$title);
 		}
 		$this->load->view('kandidaadid',$data);
 
