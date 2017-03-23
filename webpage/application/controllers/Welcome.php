@@ -27,12 +27,13 @@ class Welcome extends CI_Controller {
 		
 		//holds in memory which page the user comes from when logging in
 		$_SESSION['prev_loc'] = 'welcome';
+		$title['title'] = lang('title_index');
 		
 		if (!isset($_SESSION['userid'])){	
-			$this->load->view('header');
+			$this->load->view('header',$title);
 		}
 		else {
-			$this->load->view('loggedinheader');
+			$this->load->view('loggedinheader',$title);
 		}
 		
 		//mapsi jaoks vajalik

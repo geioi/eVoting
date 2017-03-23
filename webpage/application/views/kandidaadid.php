@@ -1,5 +1,5 @@
- <title>Kandidaadid</title>
- <div class="container">
+
+<div class="container">
         <br>
         <h3>Kandidaadid</h3>
         <div class="table-responsive">
@@ -22,5 +22,5 @@
             </table>
 		<h4>Kokku osaleb <?php echo $total;?> kandidaati</h4>
         </div>
-
+</div>
 <!-- /.container -->
