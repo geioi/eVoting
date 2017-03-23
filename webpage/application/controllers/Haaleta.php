@@ -12,13 +12,14 @@ class Haaleta extends CI_Controller {
 			} 
 			
 			$_SESSION['prev_loc'] = 'haaleta';
+			$title['title'] = lang('title_vote');
 			
             if (!isset($_SESSION['userid'])){	
 				$_SESSION['message'] = 'Selle funktsionaalsuse kasutamiseks peate olema sisse logitud!';
                 header ("Location: login");
             }
 			else{
-				$this->load->view('loggedinheader');
+				$this->load->view('loggedinheader',$title);
 				$this->load->view('haaleta');
 			}
 		
