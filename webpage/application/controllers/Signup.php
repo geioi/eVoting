@@ -17,7 +17,9 @@ class Signup extends CI_Controller {
 		
 		$_SESSION['prev_loc'] = 'signup';
 		
-		$this->load->view('header');
+		$title['title'] = lang('title_signup');
+		
+		$this->load->view('header',$title);
 		$msg['message'] = $message;
 		$this->load->view('signup',$msg);
 	}

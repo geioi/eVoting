@@ -13,13 +13,15 @@ class Kandideeri extends CI_Controller {
 			
 			$_SESSION['prev_loc'] = 'kandideeri';
 			
+			$title['title'] = lang('title_candidacy');
+			
             if (!isset($_SESSION['userid'])){	
 			//if (!($this->session->userdata('login'))) {
 				$_SESSION['message'] = 'Selle funktsionaalsuse kasutamiseks peate olema sisse logitud!';
                 header ("Location: login");
             }
 			else{
-				$this->load->view('loggedinheader');
+				$this->load->view('loggedinheader',$title);
 				$this->load->view('kandideeri');
 			}
 	}
