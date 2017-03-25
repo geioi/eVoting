@@ -4,7 +4,7 @@ class candidates extends CI_Model {
 		parent::__construct();
 	}
 	public function getData() {
-		$query = "SELECT `kandidaadid`.`firstName`,`kandidaadid`.`lastName`,`kandidaadid`.`maakond`,`kandidaadid`.`partei` FROM `kandidaadid`";
+		$query = "SELECT * FROM v_kandidaadid";
 		$exec = $this->db->query($query);
 		return $exec->result();
 	}
@@ -13,6 +13,5 @@ class candidates extends CI_Model {
 		$result = $this->db->query("SELECT * FROM kandidaadid");
 		return $result -> num_rows();
 	}
-
 }
 ?>
