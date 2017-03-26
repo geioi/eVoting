@@ -1,14 +1,14 @@
 
 <div class="container">
         <br>
-        <h3>Kandidaadid</h3>
+        <h3><?php echo lang('candidates'); ?></h3>
         <div class="table-responsive">
             <table class="table">
                 <tr>
-                    <th>Eesnimi</th>
-                    <th>Perenimi</th>
-                    <th>Maakond</th>
-                    <th>Partei</th>
+                    <th><?php echo lang('firstName'); ?></th>
+                    <th><?php echo lang('lastName'); ?></th>
+                    <th><?php echo lang('candidates_county'); ?></th>
+                    <th><?php echo lang('candidates_party'); ?></th>
                 </tr>
                 <?php foreach($complete as $kandidaat) : ?>
                     <tr>
@@ -20,7 +20,7 @@
                 <?php endforeach ?>
 
             </table>
-		<h4>Kokku osaleb <?php echo $total;?> kandidaati</h4>
+		<h4><?php echo $total .' '.lang('candidates_total');?></h4>
         </div>
 </div>
 <!-- /.container -->

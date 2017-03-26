@@ -19,7 +19,7 @@ class Login extends CI_Controller {
 			$message = $_SESSION['message'];
 		}
 		else{
-			$message = 'Siin saate sisse logida';
+			$message = lang('login_txt');
 		}
 		
 		$title['title'] = lang('title_login');

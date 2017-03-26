@@ -1,5 +1,5 @@
 <div class="container">
-  <p>Kandideerimine on hetkel suletud</p>
+  <p><?php echo lang('candidacy_txt'); ?></p>
 </div>
 
 

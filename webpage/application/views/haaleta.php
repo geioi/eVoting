@@ -2,9 +2,9 @@
   
 
   <br>
-	<label for="kandidaadi_id">Sisesta kandidaadi id: <input type="text" id="kandidaadi_id" name="kandidaadi_id" value=""></label><br>
+	<label for="kandidaadi_id"><?php echo lang('enter_voteID'); ?><input type="text" id="kandidaadi_id" name="kandidaadi_id" value=""></label><br>
 	<br>
-<input type="submit" value="Hääleta" onclick="loadXMLDoc()">
+<input type="submit" value="<?php echo lang('vote_btn'); ?>" onclick="loadXMLDoc()">
 
 
 <br><br>
