@@ -17,7 +17,7 @@ class Kandideeri extends CI_Controller {
 			
             if (!isset($_SESSION['userid'])){	
 			//if (!($this->session->userdata('login'))) {
-				$_SESSION['message'] = 'Selle funktsionaalsuse kasutamiseks peate olema sisse logitud!';
+				$_SESSION['message'] = lang('please_log');
                 header ("Location: login");
             }
 			else{

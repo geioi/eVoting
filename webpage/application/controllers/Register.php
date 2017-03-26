@@ -12,29 +12,29 @@ class Register extends CI_Controller {
 		
 		//checking for errors
 		if (!isset($_POST['sugu'])){
-			$_SESSION['message'] = 'Sugu jäi valimata';
+			$_SESSION['message'] = lang('genderNotChosen');
 		}
 		
 		elseif (strlen($_POST['isikukood']) != 11 || !ctype_digit($_POST['isikukood'])) {
-			$_SESSION['message'] = 'Isikukood sisestati valel kujul';
+			$_SESSION['message'] = lang('badPersonalID');
 		}
 		
 		elseif (!ctype_digit($_POST['date']) || !ctype_digit($_POST['month']) || !ctype_digit($_POST['year'])
 		|| ($_POST['date'] > 31 || $_POST['date'] < 1) || ($_POST['month'] > 12 || $_POST['month'] < 1)
 		|| ($_POST['year'] > date("Y"))){
-			$_SESSION['message'] = 'Vigane kuupäeva sisend';
+			$_SESSION['message'] = lang('badDate');
 		}
 		
 		elseif ($_POST['parool'] != $_POST['parool_uuesti']) {
-			$_SESSION['message'] = 'Paroolid ei ühti';
+			$_SESSION['message'] = lang('badPass');
 		}
 		
 		elseif (!($this->Registreeri->checkEmail($_POST['email']))){
-			$_SESSION['message'] = 'Email on juba kasutusel!';
+			$_SESSION['message'] = lang('emailTaken');
 		}
 		
 		elseif (!($this->Registreeri->checkPerson_id($_POST['isikukood']))){
-			$_SESSION['message'] = 'Sellise isikukoodiga kasutaja on juba olemas!';
+			$_SESSION['message'] = lang('personIdTaken');
 		}
 		
 		else {
@@ -52,7 +52,7 @@ class Register extends CI_Controller {
 			
 			$uus_kasutaja = $this->Registreeri->registreeri($email, $firstname, $lastname, $person_id, $password, $birthdate, $gender);
 			
-			$_SESSION['message'] = 'Registreerumine õnnestus!';
+			$_SESSION['message'] = lang('register_success');
 		}
 		
 		header('Location: signup');

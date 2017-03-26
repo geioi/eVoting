@@ -7,7 +7,7 @@
    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>bootstrap/css/bootstrap.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/voting/webpage/js/loaddoc.js"></script>
+  <script type="text/javascript" src="/eVoting/webpage/js/loaddoc.js"></script>
 </head>
 <body>
 
@@ -27,7 +27,7 @@
 	  <li><br><p><?php echo $_SESSION['userid']?></p></li>
 	  <li><a href="<?php echo base_url(); ?>index.php/langswitch/switchLanguage/estonian">Eesti</a></li>
 	  <li><a href="<?php echo base_url(); ?>index.php/langswitch/switchLanguage/english">English</a></li>
-      <li><a href="<?php echo base_url(); ?>index.php/logout"><span class="glyphicon glyphicon-log-out"></span> Logi välja</a></li>
+      <li><a href="<?php echo base_url(); ?>index.php/logout"><span class="glyphicon glyphicon-log-out"></span> <?php echo lang("menu_logout"); ?></a></li>
     </ul>
   </div>
 </nav>

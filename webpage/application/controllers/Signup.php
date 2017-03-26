@@ -12,7 +12,7 @@ class Signup extends CI_Controller {
 			$message = $_SESSION['message'];
 		}
 		else{
-			$message = 'Registreeri kasutajaks';
+			$message = lang('register_txt');
 		}
 		
 		$_SESSION['prev_loc'] = 'signup';

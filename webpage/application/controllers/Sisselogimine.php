@@ -4,7 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Sisselogimine extends CI_Controller {
 
 	public function index(){
-		session_start();
+		if(!isset($_SESSION)) { 
+			session_start(); 
+		}
 		
 		$default_loc = 'login';
 		$prev_loc = $_SESSION['prev_loc'];
@@ -17,10 +19,10 @@ class Sisselogimine extends CI_Controller {
 		$password = $_POST['password'];
 		
 		// to prevent mysql injection
-		$person_id = stripcslashes($person_id);
-		$password = stripcslashes($password);
-		$person_id = mysql_real_escape_string($person_id);
-		$password = mysql_real_escape_string($password);
+		//$person_id = stripcslashes($person_id);
+		//$password = stripcslashes($password);
+		//$person_id = mysql_real_escape_string($person_id);
+		//$password = mysql_real_escape_string($password);
 		$password = hash('sha512', $password);
 		
 		if (!empty($person_id) && !empty($password)){
@@ -39,11 +41,11 @@ class Sisselogimine extends CI_Controller {
 				exit;
 				
 			} else {
-				$_SESSION['message'] = 'Vale kasutajanimi või parool';
+				$_SESSION['message'] = lang('invalidUserPass');
 			}
 		}
 		else {
-			$_SESSION['message'] = 'Mõlemad lahtrid peavad olema täidetud!';
+			$_SESSION['message'] = lang('bothFields');
 		}
 		
 		header('Location: '.$default_loc);

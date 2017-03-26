@@ -15,7 +15,7 @@ class Haaleta extends CI_Controller {
 			$title['title'] = lang('title_vote');
 			
             if (!isset($_SESSION['userid'])){	
-				$_SESSION['message'] = 'Selle funktsionaalsuse kasutamiseks peate olema sisse logitud!';
+				$_SESSION['message'] = lang('please_log');
                 header ("Location: login");
             }
 			else{

@@ -9,15 +9,15 @@
 	  ?>
 </p>
 	<form action="Sisselogimine" method="POST">
-		<label for="isikukood"> Isikukood:<br>
+		<label for="isikukood"> <?php echo lang('personalID'); ?>:<br>
 		<input type="text" id="isikukood" name="person_id" value="">
 		</label>
 		<br>
-		<label for="parool">Parool:<br>
+		<label for="parool"><?php echo lang('password'); ?>:<br>
 		<input type="password" id="parool" name="password" value="">
 		</label>
 		<br><br>
-		<input type="submit" value="Logi sisse">
+		<input type="submit" value="<?php echo lang('log_btn'); ?>">
 	</form>
 	<hr>
 	

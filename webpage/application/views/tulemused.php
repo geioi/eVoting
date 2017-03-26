@@ -1,5 +1,5 @@
 <div class="container">
-  <p>Hääled on kokkulugemisel</p>
+  <p><?php echo lang('results'); ?></p>
 </div>
 
 </body>
