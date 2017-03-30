@@ -41,6 +41,8 @@ TwKTiREj7Q4xo50YlsoigC/C/+iPXKMUs/Gy+bwZR5sKTuXeRJuP
 // STEP 2. Define payment information
 // ==================================
 
+$dt = new DateTime("now", new DateTimeZone('Europe/Tallinn'));
+
 $fields = array(
         "VK_SERVICE"     => "1011",
         "VK_VERSION"     => "008",
@@ -53,7 +55,7 @@ $fields = array(
 		"VK_REF" => "1234561",
         "VK_CANCEL" => 'http://www.evoting.cs.ut.ee',
         "VK_MSG"         => "annetus",
-        "VK_DATETIME"    => "2017-03-30T18:50:14+0300",
+        "VK_DATETIME"    => (string)($dt->format('Y-m-d\TH:i:s+0300')),
         "VK_RETURN"      => "http://www.evoting.cs.ut.ee",
         "VK_CHARSET"     => "UTF-8",
 		"PANGALINK_NAME" => "Sisesta nimi",
@@ -118,13 +120,9 @@ foreach ($xml->children() as $erakond) {
             <input type="hidden" name="<?php echo $key; ?>" value="<?php echo htmlspecialchars($val); ?>" />
 <?php endforeach; ?>
 
-  
-
                 <!-- when the user clicks "Edasi panga lehele" form data is sent to the bank -->
-                <tr><td colspan="2"><input type="submit" value="Edasi panga lehele" /></td></tr>
-            </table>
+                <input type="submit" value="Edasi panga lehele" />
         </form>
-  
   </div>
 </body>
 </html>
