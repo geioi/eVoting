@@ -27,6 +27,8 @@ $lang['badDate'] = 'Vigane kuupäeva sisend!';
 $lang['badPass'] = 'Paroolid ei ühti!';
 $lang['emailTaken'] = 'Email on juba kasutusel!';
 $lang['personIdTaken'] = 'Sellise isikukoodiga kasutaja on juba olemas!';
+$lang['badFields'] = 'Kumbki lahter ei tohi sisaldada numbreid!';
+$lang['badCandidacy'] = 'Te olete juba kandidaadiks registreerunud';
 
 //lehtede sisu
 $lang['main_txt'] = 'Jaoskonnad';
@@ -35,13 +37,15 @@ $lang['firstName'] = 'Eesnimi';
 $lang['lastName'] = 'Perekonna nimi';
 $lang['candidates_county'] = 'Maakond';
 $lang['candidates_party'] = 'Partei';
+$lang['candidates_nr'] = 'Kandidaadi number';
+$lang['candidates_votes'] = 'Hääli';
 $lang['candidates_total'] = 'kandidaati kokku';
 $lang['personalID'] = 'Isikukood';
 $lang['password'] = 'Parool';
 $lang['passwordAgain'] = 'Parool uuesti';
 $lang['dob'] = 'Sünnikuupäev';
 $lang['log_btn'] = 'Logi sisse';
-$lang['results'] = 'Hääled on kokkulugemisel.';
+$lang['results'] = 'Hääletamise hetkeseis on siin kuvatud.';
 $lang['gender'] = 'Sugu';
 $lang['gender_male'] = 'Mees';
 $lang['gender_female'] = 'Naine';
@@ -49,8 +53,10 @@ $lang['gender_other'] = 'Muu';
 $lang['login_txt'] = 'Siin saate sisse logida';
 $lang['enter_voteID'] = 'Sisesta kandidaadi ID: ';
 $lang['vote_btn'] = 'Hääleta';
-$lang['candidacy_txt'] = 'Kandideerimine on hetkel suletud.';
+$lang['candidacy_txt'] = 'Registreeri ennast kandidaadiks.';
 $lang['register_txt'] = 'Registreeri kasutajaks';
 $lang['register_success'] = 'Registreerumine õnnestus!';
 $lang['reg_btn'] = 'Registreeri';
+$lang['candidacy_partyName'] = 'Partei nimi:';
+$lang['candidacy_btn'] = 'Kandideeri';
 

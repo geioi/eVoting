@@ -27,10 +27,10 @@ class Sisselogimine extends CI_Controller {
 		
 		if (!empty($person_id) && !empty($password)){
 			if (!empty($this->Login->validateUser($person_id, $password))){
-				//$_SESSION['message'] = 'Tere tulemast ' .$person_id . '!';
 				$nimi = $this->Login->getName($person_id);
 
 				$_SESSION['userid'] = $nimi;
+				$_SESSION['email'] = $this->Login->getEmail($person_id);
 				$_SESSION['login'] = true;
 				
 				if ($prev_loc == 'signup' || $prev_loc == ''){
