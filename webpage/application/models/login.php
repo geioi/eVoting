@@ -15,6 +15,15 @@ class Login extends CI_Model {
 		return $exec->result();
 	}
 	
+	public function getEmail($person_id){
+		$query = "SELECT email from users WHERE person_id = '$person_id'";
+		$exec = $this->db->query($query);
+		
+		foreach ($exec->result() as $email){
+			return $email->email;
+		}
+	}
+	
 	public function getName($person_id){
 		$query = "SELECT CONCAT(`users`.`firstname`,' ',`users`.`lastname`) as nimi from users WHERE person_id = '$person_id'";
 		$exec = $this->db->query($query);

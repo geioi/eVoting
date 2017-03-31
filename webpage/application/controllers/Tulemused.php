@@ -11,6 +11,8 @@ class Tulemused extends CI_Controller {
 		
 		$_SESSION['prev_loc'] = 'tulemused';
 		$title['title'] = lang('title_results');
+		$this->load->model('candidates');
+		$data['complete'] = $this->candidates->getData();
 		
 		if (!isset($_SESSION['userid'])){	
 			$this->load->view('header',$title);
@@ -19,6 +21,6 @@ class Tulemused extends CI_Controller {
 			$this->load->view('loggedinheader',$title);
 		}
 		
-		$this->load->view('tulemused');
+		$this->load->view('tulemused',$data);
 	}
 }

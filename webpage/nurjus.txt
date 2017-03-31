@@ -1,0 +1,1 @@
+﻿Te olete juba hääletanud või sellise ID-ga kandidaati ei eksisteeri.

@@ -13,6 +13,14 @@ class Kandideeri extends CI_Controller {
 			
 			$_SESSION['prev_loc'] = 'kandideeri';
 			
+			if(!empty($_SESSION['message'])) {
+				$message = $_SESSION['message'];
+			}
+			else{
+				$message = lang('candidacy_txt');
+			}
+			
+			$data['message'] = $message;
 			$title['title'] = lang('title_candidacy');
 			
             if (!isset($_SESSION['userid'])){	
@@ -22,7 +30,7 @@ class Kandideeri extends CI_Controller {
             }
 			else{
 				$this->load->view('loggedinheader',$title);
-				$this->load->view('kandideeri');
+				$this->load->view('kandideeri',$data);
 			}
 	}
 }
