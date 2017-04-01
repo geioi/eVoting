@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2017 at 10:07 PM
+-- Generation Time: Apr 01, 2017 at 08:52 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -24,6 +24,10 @@ DELIMITER $$
 --
 -- Procedures
 --
+DROP PROCEDURE IF EXISTS `Mark_Voted`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Mark_Voted` (IN `_email` VARCHAR(50))  MODIFIES SQL DATA
+UPDATE `users` SET `hasVoted`=1 WHERE `email`=`_email`$$
+
 DROP PROCEDURE IF EXISTS `Register_Candidate`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Register_Candidate` (IN `_id` INT(11), IN `_firstname` VARCHAR(50) CHARSET utf8, IN `_lastname` VARCHAR(50) CHARSET utf8, IN `_partei` VARCHAR(50) CHARSET utf8, IN `_maakond` VARCHAR(50))  NO SQL
 INSERT INTO `kandidaadid`(`id`, `firstName`, `lastName`, `partei`, `maakond`) VALUES (_id, _firstname, _lastname, _partei, _maakond)$$
@@ -33,6 +37,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Register_FB_User` (IN `_id` VARCHAR
 
 DROP PROCEDURE IF EXISTS `Register_User`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Register_User` (IN `_email` VARCHAR(100), IN `_firstname` VARCHAR(50), IN `_lastname` VARCHAR(50), IN `_person_id` VARCHAR(20), IN `_password` VARCHAR(128), IN `_birthdate` VARCHAR(50), IN `_gender` VARCHAR(50))  INSERT INTO `users`(`person_id`, `password`, `email`, `firstname`, `lastname`, `birthdate`, `gender`) VALUES (_person_id, _password, _email, _firstname, _lastname, _birthdate, _gender)$$
+
+DROP PROCEDURE IF EXISTS `UpdateVoteCount`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateVoteCount` (IN `_id` INT(11))  MODIFIES SQL DATA
+UPDATE `kandidaadid` SET `votes`=`votes`+1 WHERE `id`=`_id`$$
 
 DELIMITER ;
 
@@ -86,7 +94,10 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `person_id`, `password`, `email`, `firstname`, `lastname`, `birthdate`, `gender`, `hasVoted`) VALUES
 (1, '12345678901', 'testing', 'test@kasutaja.com', 'Test', 'Kasutaja', '17/02/1996', 'Male', 0),
 (2, '23456789023', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'asd@d.com', 'Järjekordne', 'Test', '02/11/1997', 'Helikopter', 0),
-(4, '39602456194', 'e367f29cc9e99ce6ef6aabb3c9c9a320991d0b59e132ae2d4bf1043299b676958d1dd69b8e433b167c89537894c49c3496534f29b0f69b8f77a3da350576e53c', 'geio96@hotmail.com', 'Geio', 'Illus', '17/02/1996', 'Mees', 0);
+(4, '39602456194', 'e367f29cc9e99ce6ef6aabb3c9c9a320991d0b59e132ae2d4bf1043299b676958d1dd69b8e433b167c89537894c49c3496534f29b0f69b8f77a3da350576e53c', 'geio96@hotmail.com', 'Geio', 'Illus', '17/02/1996', 'Mees', 0),
+(5, '49603182734', 'e367f29cc9e99ce6ef6aabb3c9c9a320991d0b59e132ae2d4bf1043299b676958d1dd69b8e433b167c89537894c49c3496534f29b0f69b8f77a3da350576e53c', 'mariabelinskaa@gmail.com', 'Maria', 'Belinska', '18/03/1996', 'Naine', 0),
+(6, '38410101010', 'e367f29cc9e99ce6ef6aabb3c9c9a320991d0b59e132ae2d4bf1043299b676958d1dd69b8e433b167c89537894c49c3496534f29b0f69b8f77a3da350576e53c', 'lauri.ratsep@ut.ee', 'L', 'R', '12/12/1212', 'Karu', 0),
+(7, '39515345234', '5fda97a131fa4746fa835caefeb6f6d64f2b12ff5a4e42e840639af3dd747cf3627fec8039733e5a77d9b99aba473dae4b08134bb4e39006dcd06cec90c76371', 'ivarkala@hotmail.com', 'ivar', 'kala', '25/5/1995', 'Mees', 0);
 
 -- --------------------------------------------------------
 
@@ -137,12 +148,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `kandidaadid`
 --
 ALTER TABLE `kandidaadid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

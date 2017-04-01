@@ -1,42 +1,49 @@
 function vote(){
 	var input = document.getElementById("kandidaadi_id").value;
 	var email = document.getElementById("mail").value;
-	
-	/*
-	see osa ei tööta hetkel
-	
-	var info = $.ajax({
-    type: "POST",
-    url: '/index.php/KandideeriHaaleta.php',
-    dataType: 'json',
-    data: {functionname: 'getInfo', arguments: [email]},
 
-    success: function (data) {
-            alert(data);
-	}
-	});
-	*/
+	var isNumber = /^\d+$/.test(input);
 
 	
-	var xmlhttp;
-	if (window.XMLHttpRequest) {
-		xmlhttp = new XMLHttpRequest();
-	  } else {
-		// code for older browsers
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	  }
-	  xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-		  document.getElementById("tekst").innerHTML =
-		  xmlhttp.responseText;
+	if (isNumber){
+		var info = $.ajax({
+		type: "POST",
+		url: 'Haaleta/checkVote',
+		dataType: 'text',
+		data: {email:email, id:input},
+
+		success: function (data) {
+			info = data;
+			updateText(info);
 		}
-	  };
-	
-	if (input === ""){
-		xmlhttp.open("GET", "/eVoting/webpage/nurjus.txt");
+		});
 	}
 	else{
+		updateText(true);
+	}
+}
+
+function updateText(bool){
+	var xmlhttp;
+		if (window.XMLHttpRequest) {
+			xmlhttp = new XMLHttpRequest();
+		  } else {
+			// code for older browsers
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			  document.getElementById("tekst").innerHTML =
+			  this.responseText;
+			}
+		  };
+	if (bool) {
+		xmlhttp.open("GET", "/eVoting/webpage/nurjus.txt");
+	}
+	
+	else {
 		xmlhttp.open("GET", "/eVoting/webpage/kinnitus.txt");
 	}
+	
 	xmlhttp.send();
 }
