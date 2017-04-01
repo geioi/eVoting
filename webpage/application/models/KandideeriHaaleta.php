@@ -10,13 +10,28 @@ class KandideeriHaaleta extends CI_Model {
 	}
 	
 	public function checkIfVoted($email) {
-		$query = "";
+		$query = "SELECT `users`.`hasVoted` AS voted FROM users WHERE `users`.`email` = '$email'";
 		$exec = $this->db->query($query);
-		return false;
+		
+		foreach($exec->result() as $bool) {
+			return $bool->voted;
+		}
+	}
+	
+	public function checkCandidates($id){
+		$query = "SELECT id FROM kandidaadid WHERE id = '$id'";
+		$exec = $this->db->query($query);
+		return $exec->result();
 	}
 	
 	public function markVoted($email) {
-		$query = "";
+		$query = "CALL Mark_Voted('$email')";
+		$exec = $this->db->query($query);
+		return;
+	}
+	
+	public function updateVoteCount($id){
+		$query = "CALL UpdateVoteCount('$id')";
 		$exec = $this->db->query($query);
 		return;
 	}
@@ -37,8 +52,8 @@ class KandideeriHaaleta extends CI_Model {
 		$query = "SELECT `users`.`id` AS id,`users`.`firstname` AS firstname,`users`.`lastname` AS lastname, `users`.`hasVoted` AS voted from users WHERE email = '$email'";
 		$exec = $this->db->query($query);
 		
-		//return $exec->result();
-		return json_encode($exec->result);
+		return $exec->result();
+		//return json_encode($exec->result);
 	}
 }
 ?>
