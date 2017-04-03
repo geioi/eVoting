@@ -102,17 +102,17 @@ $fields["VK_MAC"] = base64_encode($signature);
   <?php echo $map['js']; ?>
   <?php echo $map['html']; ?>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfopMg31GEOWmiqbWs-lqa-Bu_aCf4XFE&callback=initMap" type="text/javascript"></script>
-<br><br><?php
+<br><?php
 $xml=simplexml_load_file("http://localhost/eVoting/webpage/xml/file.xml");
 
-foreach ($xml->children() as $erakond) {
-    echo 'Erakond: ' . $erakond['nimi']."\n<br />"; 
+foreach ($xml->children() as $jaoskond) {
+    echo '' . $jaoskond['nimi']."\n<br />"; 
 
-    foreach ($erakond->children() as $arve) {
-        echo 'Arve: ' . $arve['pangaarve']."\n<br />\n<br />";
+    foreach ($jaoskond->children() as $aadress) {
+        echo 'Aadress: ' . $aadress['aadress']."\n<br />\n<br />";
     }
 }
-?>
+?><br>
 
         <form method="post" action="http://localhost:8080/banklink/swedbank-common">
             <!-- include all values as hidden form fields -->
