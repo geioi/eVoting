@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <erakonnad>
- <erakond nimi="Esimene erakond">
- <erakond pangaarve="123"/>  
+ <erakond nimi="Esimene jaoskond">
+ <erakond aadress="Liivi 2, Tartu"/>  
  </erakond>
- <erakond nimi="Teine erakond">
- <erakond pangaarve="321"/>  
+ <erakond nimi="Teine jaoskond">
+ <erakond aadress="Ülikooli 17, Tartu"/>  
  </erakond>
 </erakonnad>
