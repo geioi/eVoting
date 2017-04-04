@@ -39,13 +39,25 @@ class KandideeriHaaleta extends CI_Model {
 	public function checkCandidacy($email) {
 		$query = "SELECT id from users WHERE email = '$email'";
 		$exec = $this->db->query($query);
-		
+
+		$result = "";
+
 		foreach ($exec->result() as $id) {
+
 			$query2 = "SELECT id from kandidaadid WHERE `kandidaadid`.id = '$id->id'";
 			$exec2 = $this->db->query($query2);
 			
-			return $exec2->result();
+			foreach ($exec2->result() as $check) {
+				foreach ($this->checkCandidates($check->id) as $id2){
+					if ($id2->id == $id){
+						return;
+						}
+				}
+			}
+			
+			$result = $exec2->result();
 		}
+              return $result;
 	}
 	
 	public function getInfo($email){
@@ -53,7 +65,6 @@ class KandideeriHaaleta extends CI_Model {
 		$exec = $this->db->query($query);
 		
 		return $exec->result();
-		//return json_encode($exec->result);
 	}
 }
 ?>
