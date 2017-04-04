@@ -28,6 +28,12 @@ class Haaleta extends CI_Controller {
 	
 	public function checkvote(){
 		$this->load->model('KandideeriHaaleta');
+		foreach ($this->KandideeriHaaleta->getInfo($_POST['email']) as $info) {
+			if ($info->id == $_POST['id']) {
+				echo "midagiMuud";
+				return;
+			}
+		}
 		if($this->KandideeriHaaleta->checkIfVoted($_POST['email']) == '0') {
 			if (!empty($this->KandideeriHaaleta->checkCandidates($_POST['id']))){
 				$this->KandideeriHaaleta->markVoted($_POST['email']);
