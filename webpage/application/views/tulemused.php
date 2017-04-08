@@ -27,29 +27,10 @@
     </div>
 	<br><br>
 	
-	<div id="tabeliKoht">
-	
   <div class="table-responsive" id="resp">
             <table class="table" id="tabel">
-                <tr id="head">
-                    <th><?php echo lang('firstName'); ?></th>
-                    <th><?php echo lang('lastName'); ?></th>
-                    <th><?php echo lang('candidates_county'); ?></th>
-                    <th><?php echo lang('candidates_party'); ?></th>
-					<th><?php echo lang('candidates_votes'); ?></th>
-                </tr>
-                <?php foreach($complete as $kandidaat) : ?>
-                    <tr id="testimine">
-                        <td id="td1"><?php echo  htmlspecialchars($kandidaat->firstName);?></td>
-                        <td id="td2"><?php echo  htmlspecialchars($kandidaat->lastName);?></td>
-                        <td id="td3"><?php echo  htmlspecialchars($kandidaat->maakond);?></td>
-                        <td id="td4"><?php echo  htmlspecialchars($kandidaat->partei);?></td>
-						<td id="td5"><?php echo  htmlspecialchars($kandidaat->votes);?></td>
-                    </tr>
-                <?php endforeach ?>
-
+			<?php echo "<script type='text/javascript'>showCandidates({$kõikKandidaadid});</script>";?>
             </table>
-        </div>
 		</div>
 </div>
 

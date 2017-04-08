@@ -7,7 +7,6 @@ function showCandidates(kandidaatideArray){
 	var kandidaadid = kandidaatideArray
 	//console.log(kandidaadid);
 	
-	//var IDd = new Array;
 	var eesnimed = new Array;
 	var perenimed = new Array
 	var maakonnad = new Array;
@@ -24,72 +23,7 @@ function showCandidates(kandidaatideArray){
 	}
 	
 	//console.log(eesnimed, perenimed, maakonnad);
-	
-	/*
-	
-	var resp = document.getElementById("resp");
-	var head = document.getElementById("head");
-	var headerid = head.cloneNode(true);
-	var tabel = document.getElementById("tabel");
-	var stiil = tabel.cloneNode(true);
-	var rida = document.getElementById("testimine");
-	var stiil2 = rida.cloneNode(true);
-	var lahter1 = document.getElementById("td1");
-	var stiil3 = lahter1.cloneNode(true);
-	var lahter2 = document.getElementById("td2");
-	var stiil4 = lahter2.cloneNode(true);
-	var lahter3 = document.getElementById("td3");
-	var stiil5 = lahter3.cloneNode(true);
-	var lahter4 = document.getElementById("td4");
-	var stiil6 = lahter4.cloneNode(true);
-	var lahter5 = document.getElementById("td5");
-	var stiil7 = lahter5.cloneNode(true);
-	
-	console.log(document.getElementById("resp").style);
-	
-	
-	
-	//resp.removeChild(tabel);
-	while (tabel.firstChild) {
-		tabel.removeChild(tabel.firstChild);
-	}
-	
-	//stiil.setAttribute("id", "tabel");
-	
-	//stiil.appendChild(headerid);
-	
 
-	
-	for (var i = 0; i < eesnimed.length; i++){
-		
-		stiil3.innerHTML=eesnimed[i];
-		stiil2.appendChild(stiil3);
-		
-		stiil4.innerHTML=perenimed[i];
-		stiil2.appendChild(stiil4);
-		
-		stiil5.innerHTML=maakonnad[i];
-		stiil2.appendChild(stiil5);
-		
-		stiil6.innerHTML=parteid[i];
-		stiil2.appendChild(stiil6);
-		
-		stiil7.innerHTML=hääled[i];
-		stiil2.appendChild(stiil7);
-		
-		tabel.appendChild(stiil2);
-		
-	}
-	
-	resp.appendChild(tabel);
-	
-	
-	var div = document.createElement("DIV");
-	div.setAttribute("class", "table-responsive");
-	div.setAttribute("id", "resp");
-	document.getElementById("container").appendChild(div);
-	*/
-	
 	
 	var elem = document.getElementById("tabel");
 	elem.parentNode.removeChild(elem);
@@ -130,6 +64,32 @@ function showCandidates(kandidaatideArray){
 		var parteiLahter = document.createElement("TD");
 		var häälLahter = document.createElement("TD");
 		
+		var vahe1 = document.createElement('hr');
+		vahe1.style.marginBottom = "8px";
+		vahe1.style.marginTop = "8px";
+		
+		var vahe2 = document.createElement('hr');
+		vahe2.style.marginBottom = "8px";
+		vahe2.style.marginTop = "8px";
+		
+		var vahe3 = document.createElement('hr');
+		vahe3.style.marginBottom = "8px";
+		vahe3.style.marginTop = "8px";
+		
+		var vahe4 = document.createElement('hr');
+		vahe4.style.marginBottom = "8px";
+		vahe4.style.marginTop = "8px";
+		
+		var vahe5 = document.createElement('hr');
+		vahe5.style.marginBottom = "8px";
+		vahe5.style.marginTop = "8px";
+		
+		eesnimiLahter.appendChild(vahe1);
+		perenimiLahter.appendChild(vahe2);
+		maakondLahter.appendChild(vahe3);
+		parteiLahter.appendChild(vahe4);
+		häälLahter.appendChild(vahe5);
+		
 		row.appendChild(eesnimiLahter);
 		row.appendChild(perenimiLahter);
 		row.appendChild(maakondLahter);
@@ -150,21 +110,8 @@ function showCandidates(kandidaatideArray){
 		
 		table.appendChild(row);
 		//table.appendChild(document.createElement("/TR"));
-		//document.body.appendChild(document.createElement('hr'));
+		
 	}
 	
-	
-	
-	/*
-	$(document).ready(function() {
-		var wrapper = $(".tabel");
-		var addline = wrapper.find('tr').last();
-		$wrapper.append(addline.clone());
-		
-	});
-	*/
-
 }
-//window.addEventListener('load', function(){
-//	showCandidates($kõikKandidaadid)
-//});
+
