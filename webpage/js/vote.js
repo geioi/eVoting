@@ -37,15 +37,12 @@ function updateText(bool){
 			  this.responseText;
 			}
 		  };
-	if (bool == true) {
+	if (bool) {
 		xmlhttp.open("GET", "/eVoting/webpage/nurjus.txt");
 	}
 	
-	else if (!bool){
+	else {
 		xmlhttp.open("GET", "/eVoting/webpage/kinnitus.txt");
-	}
-	else{
-		xmlhttp.open("GET", "/eVoting/webpage/endaPoolt.txt");
 	}
 	
 	xmlhttp.send();
