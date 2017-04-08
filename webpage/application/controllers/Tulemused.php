@@ -13,6 +13,18 @@ class Tulemused extends CI_Controller {
 		$title['title'] = lang('title_results');
 		$this->load->model('candidates');
 		$data['complete'] = $this->candidates->getData();
+		$data['maakonnad'] = $this->candidates->getMaakonnad();
+		$data['parteid'] = $this->candidates->getParteid();
+		
+		$data['kõikKandidaadid'] = json_encode($this->candidates->getData());
+		
+		foreach ($data['maakonnad'] as $maakond){
+			$data[$maakond->maakond] = json_encode($this->candidates->getByMaakond($maakond->maakond));
+		}
+		
+		foreach ($data['parteid'] as $partei){
+			$data[str_replace(" ", "", $partei->partei)] = json_encode($this->candidates->getByPartei($partei->partei));
+		}
 		
 		if (!isset($_SESSION['userid'])){	
 			$this->load->view('header',$title);
