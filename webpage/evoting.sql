@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Loomise aeg: Aprill 09, 2017 kell 04:47 PM
+-- Loomise aeg: Aprill 09, 2017 kell 05:14 PM
 -- Serveri versioon: 10.1.21-MariaDB
 -- PHP versioon: 5.6.30
 
@@ -63,7 +63,7 @@ INSERT INTO `kandidaadid` (`id`, `firstName`, `lastName`, `partei`, `maakond`, `
 (2, 'Jüri', 'Muri', 'Kollane Partei', 'Harjumaa', 0, '38410101010'),
 (3, 'Mari', 'Kuri', 'Punased', 'Harjumaa', 2, '12345678901'),
 (4, 'Random', 'Nimi', 'Punased', 'Tartumaa', 3, '23456789023'),
-(10, 'Ivar', 'Kalamees', 'sdfgfg', 'dfggdf', 0, '1279935575423507');
+(6, 'Ivar', 'Kalamees', 'kollased', 'sinised', 5, '');
 
 -- --------------------------------------------------------
 
@@ -122,8 +122,8 @@ CREATE TABLE `v_kandidaadid` (
 `id` int(11)
 ,`firstName` varchar(50)
 ,`lastName` varchar(50)
-,`maakond` varchar(50)
 ,`partei` varchar(50)
+,`maakond` varchar(50)
 ,`votes` int(10)
 );
 
@@ -143,7 +143,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `v_kandidaadid`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_kandidaadid`  AS  select `kandidaadid`.`id` AS `id`,`kandidaadid`.`firstName` AS `firstName`,`kandidaadid`.`lastName` AS `lastName`,`kandidaadid`.`maakond` AS `maakond`,`kandidaadid`.`partei` AS `partei`,`kandidaadid`.`votes` AS `votes` from `kandidaadid` group by `kandidaadid`.`partei` order by `kandidaadid`.`maakond` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_kandidaadid`  AS  select `kandidaadid`.`id` AS `id`,`kandidaadid`.`firstName` AS `firstName`,`kandidaadid`.`lastName` AS `lastName`,`kandidaadid`.`partei` AS `partei`,`kandidaadid`.`maakond` AS `maakond`,`kandidaadid`.`votes` AS `votes` from `kandidaadid` order by `kandidaadid`.`id` ;
 
 --
 -- Indeksid tõmmistatud tabelitele
