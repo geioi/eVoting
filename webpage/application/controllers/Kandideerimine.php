@@ -20,14 +20,16 @@ class Kandideerimine extends CI_Controller {
 			$firstname = '';
 			$lastname = '';
 			$id = '';
+			$person_id = '';
 			
 			foreach($this->KandideeriHaaleta->getInfo($_SESSION['email']) as $info) {
 				$firstname = $info->firstname;
 				$lastname = $info->lastname;
 				$id = $info->id;
+				$person_id = $info->person_id;
 			}
 			
-			$this->KandideeriHaaleta->registreeriKandidaat($id,$firstname,$lastname,$partei,$maakond);
+			$this->KandideeriHaaleta->registreeriKandidaat($id,$firstname,$lastname,$partei,$maakond, $person_id);
 			
 			$_SESSION['message'] = lang('register_success');
 		}

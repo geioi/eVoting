@@ -24,6 +24,17 @@
                 ?> 
             </ul> 
         </div>
+		<div class="btn-group" role="group"> 
+            <button id="btnGroupVerticalDrop3" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo "vali sugu"; ?><span class="caret"></span> </button>
+            <ul class="dropdown-menu" id = "erakonnad" aria-labelledby="btnGroupVerticalDrop3"> 
+                <?php
+					foreach($genderid as $k){
+						$genderStrip = str_replace(' ', '', $k->gender);
+                        echo "<li><a id=".$genderStrip." onclick='showCandidates(".${''.$genderStrip.''}.")'>".$k->gender."</a></li> ";
+                    }
+                ?> 
+            </ul> 
+        </div>
     </div>
 	<br><br>
 	

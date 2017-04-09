@@ -30,4 +30,12 @@ class Kandidaadid extends CI_Controller {
 		$this->load->view('kandidaadid',$data);
 
 	}
+	
+	public function getCandidatesJSON() {
+		$this->load->model('candidates');
+		$total = $this->candidates->getTotalCandidates();
+		$result = $this->candidates->getLastCandidateData();	
+		array_push($result, $total);
+		echo json_encode($result);
+	}
 }

@@ -3,7 +3,7 @@
         <br>
         <h3><?php echo lang('candidates'); ?></h3>
         <div class="table-responsive">
-            <table class="table">
+            <table id="myTable" class="table">
                 <tr>
                     <th><?php echo lang('firstName'); ?></th>
                     <th><?php echo lang('lastName'); ?></th>
@@ -22,7 +22,6 @@
                 <?php endforeach ?>
 
             </table>
-		<h4><?php echo $total .' '.lang('candidates_total');?></h4>
         </div>
 </div>
 <!-- /.container -->

@@ -3,8 +3,8 @@ class KandideeriHaaleta extends CI_Model {
 	function __construct() {
 		parent::__construct();
 	}
-	public function registreeriKandidaat($id,$firstname,$lastname,$partei,$maakond) {
-		$query = "CALL Register_Candidate('$id','$firstname','$lastname','$partei','$maakond')";
+	public function registreeriKandidaat($id,$firstname,$lastname,$partei,$maakond, $person_id) {
+		$query = "CALL Register_Candidate('$id','$firstname','$lastname','$partei','$maakond','$person_id')";
 		$exec = $this->db->query($query);
 		return;
 	}
@@ -61,7 +61,7 @@ class KandideeriHaaleta extends CI_Model {
 	}
 	
 	public function getInfo($email){
-		$query = "SELECT `users`.`id` AS id,`users`.`firstname` AS firstname,`users`.`lastname` AS lastname, `users`.`hasVoted` AS voted from users WHERE email = '$email'";
+		$query = "SELECT `users`.`id` AS id,`users`.`firstname` AS firstname,`users`.`lastname` AS lastname, `users`.`hasVoted` AS voted, `users`.`person_id` AS person_id from users WHERE email = '$email'";
 		$exec = $this->db->query($query);
 		
 		return $exec->result();

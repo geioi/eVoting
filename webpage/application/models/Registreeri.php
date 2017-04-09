@@ -30,6 +30,12 @@ class Registreeri extends CI_Model {
 	}
 	
 	public function registreeri_fb($id, $email, $firstname, $lastname, $gender) {
+		switch ($gender) {
+			case "male":
+				$gender = "Mees";
+			case "female":
+				$gender = "Naine";
+		}
 		$query = "CALL Register_FB_User('$id', '$email', '$firstname', '$lastname', '$gender')";
 		$exec = $this->db->query($query);
 		return;

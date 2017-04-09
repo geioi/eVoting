@@ -15,6 +15,7 @@ class Tulemused extends CI_Controller {
 		$data['complete'] = $this->candidates->getData();
 		$data['maakonnad'] = $this->candidates->getMaakonnad();
 		$data['parteid'] = $this->candidates->getParteid();
+		$data['genderid'] = $this->candidates->getGender();
 		
 		$data['kõikKandidaadid'] = json_encode($this->candidates->getData());
 		
@@ -24,6 +25,10 @@ class Tulemused extends CI_Controller {
 		
 		foreach ($data['parteid'] as $partei){
 			$data[str_replace(" ", "", $partei->partei)] = json_encode($this->candidates->getByPartei($partei->partei));
+		}
+		
+		foreach ($data['genderid'] as $gender){
+			$data[str_replace(" ", "", $gender->gender)] = json_encode($this->candidates->getByGender($gender->gender));
 		}
 		
 		if (!isset($_SESSION['userid'])){	
