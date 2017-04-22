@@ -59,3 +59,4 @@ $lang['register_success'] = 'Registration was successful!';
 $lang['reg_btn'] = 'Register';
 $lang['candidacy_partyName'] = 'Name of the party:';
 $lang['candidacy_btn'] = 'Register';
+$lang['sitemap'] = 'Sitemap';

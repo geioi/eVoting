@@ -28,6 +28,7 @@ class Kandidaadid extends CI_Controller {
 			$this->load->view('loggedinheader',$title);
 		}
 		$this->load->view('kandidaadid',$data);
+		$this->load->view('footer');
 
 	}
 	

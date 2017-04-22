@@ -31,6 +31,7 @@ class Kandideeri extends CI_Controller {
 			else{
 				$this->load->view('loggedinheader',$title);
 				$this->load->view('kandideeri',$data);
+				$this->load->view('footer');
 			}
 	}
 }

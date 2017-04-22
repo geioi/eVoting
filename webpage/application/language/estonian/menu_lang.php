@@ -59,4 +59,5 @@ $lang['register_success'] = 'Registreerumine õnnestus!';
 $lang['reg_btn'] = 'Registreeri';
 $lang['candidacy_partyName'] = 'Partei nimi:';
 $lang['candidacy_btn'] = 'Kandideeri';
+$lang['sitemap'] = 'Sisujuht';
 

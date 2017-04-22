@@ -22,5 +22,6 @@ class Signup extends CI_Controller {
 		$this->load->view('header',$title);
 		$msg['message'] = $message;
 		$this->load->view('signup',$msg);
+		$this->load->view('footer');
 	}
 }

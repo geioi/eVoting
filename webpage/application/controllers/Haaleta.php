@@ -15,13 +15,14 @@ class Haaleta extends CI_Controller {
 			$_SESSION['prev_loc'] = 'haaleta';
 			$title['title'] = lang('title_vote');
 			
-            if (!isset($_SESSION['userid'])){	
+            if (!isset($_SESSION['login'])){	
 				$_SESSION['message'] = lang('please_log');
                 header ("Location: login");
             }
 			else{
 				$this->load->view('loggedinheader',$title);
 				$this->load->view('haaleta');
+				$this->load->view('footer');
 			}
 		
 	}

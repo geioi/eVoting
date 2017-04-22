@@ -39,5 +39,6 @@ class Tulemused extends CI_Controller {
 		}
 		
 		$this->load->view('tulemused',$data);
+		$this->load->view('footer');
 	}
 }

@@ -53,5 +53,6 @@ class Welcome extends CI_Controller {
 		$data['map'] = $this->googlemaps->create_map();
 		
 		$this->load->view('avaleht',$data);
+		$this->load->view('footer');
 	}
 }
