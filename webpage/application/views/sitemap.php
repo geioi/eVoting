@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <li><a href="<?php echo base_url(); ?>index.php/welcome"><?php echo lang("menu_main"); ?></a></li>
 				<li><a href="<?php echo base_url(); ?>index.php/tulemused"><?php echo lang("menu_results"); ?></a></li>
-				<li><a href="<?php echo base_url(); ?>index.php/kandidaadid"><?php echo lang("menu_candidacy"); ?></a></li>
+				<li><a href="<?php echo base_url(); ?>index.php/kandidaadid"><?php echo lang("menu_candidates"); ?></a></li>
                 <?php
                 if (isset($_SESSION['login'])){	 ?>
 					<li><a href="<?php echo base_url(); ?>index.php/haaleta"><?php echo lang("menu_vote"); ?></a></li>
