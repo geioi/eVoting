@@ -65,5 +65,9 @@ $lang['allcand'] = 'Kõik kandidaadid';
 $lang['chooseregion'] = 'Vali regioon';
 $lang['chooseparty'] = 'Vali erakond';
 $lang['choosegender'] = 'Vali sugu';
+$lang['voted'] = 'Sa oled oma hääle andnud!';
+$lang['voting'] = 'Hääletamine';
+$lang['choosecand'] = 'Vali kandidaat';
+$lang['cancelvote'] = 'Tühista hääl';
+$lang['banklink'] = 'Edasi panga lehele';
 $lang['choosecandidate'] = 'Vali kandidaat';
-

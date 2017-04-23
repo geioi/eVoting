@@ -65,4 +65,10 @@ $lang['allcand'] = 'All candidates';
 $lang['chooseregion'] = 'Choose region';
 $lang['chooseparty'] = 'Choose party';
 $lang['choosegender'] = 'Choose gender';
+$lang['voted'] = 'You have given your vote!';
+$lang['voting'] = 'Voting';
+$lang['choosecand'] = 'Choose a candidate';
+$lang['cancelvote'] = 'Cancel vote';
+$lang['banklink'] = 'Continue to bank';
 $lang['choosecandidate'] = 'Choose candidate';
+

@@ -121,7 +121,7 @@ foreach ($xml->children() as $jaoskond) {
 <?php endforeach; ?>
 
                 <!-- when the user clicks "Edasi panga lehele" form data is sent to the bank -->
-                <input type="submit" value="Edasi panga lehele" />
+                <input class ="form-control" type="submit" value="<?php echo lang('banklink') ?>" style="height:34px;width:215px" />
         </form>
   </div>
 
