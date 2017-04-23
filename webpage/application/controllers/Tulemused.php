@@ -12,9 +12,11 @@ class Tulemused extends CI_Controller {
 		$_SESSION['prev_loc'] = 'tulemused';
 		$title['title'] = lang('title_results');
 		$this->load->model('candidates');
+		$data['keel'] = $_SESSION['site_lang'];
 		$data['maakonnad'] = $this->candidates->getMaakonnad();
 		$data['parteid'] = $this->candidates->getParteid();
 		$data['genderid'] = $this->candidates->getGender();
+		$data['nimed'] = $this->candidates->getNimed();
 		
 		$data['kõikKandidaadid'] = json_encode($this->candidates->getDataDesc());
 		
@@ -28,6 +30,10 @@ class Tulemused extends CI_Controller {
 		
 		foreach ($data['genderid'] as $gender){
 			$data[str_replace(" ", "", $gender->gender)] = json_encode($this->candidates->getByGender($gender->gender));
+		}
+		
+		foreach ($data['nimed'] as $nimi){
+			$data[$nimi->firstName . "" . $nimi->lastName] = json_encode($this->candidates->getByNimi($nimi->firstName,$nimi->lastName));
 		}
 		
 		if (!isset($_SESSION['userid'])){	

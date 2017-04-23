@@ -29,6 +29,12 @@ class candidates extends CI_Model {
 		return $exec->result();
 	}
 	
+	public function getNimed(){
+		$query = "SELECT * FROM v_kandidaadid ORDER BY firstName ASC";
+		$exec = $this->db->query($query);
+		return $exec->result();
+	}
+	
 	public function getMaakonnad(){
 		$query = "SELECT DISTINCT maakond FROM v_votes";
 		$exec = $this->db->query($query);
@@ -37,6 +43,12 @@ class candidates extends CI_Model {
 	
 	public function getGender(){
 		$query = "SELECT DISTINCT gender FROM v_candgender";
+		$exec = $this->db->query($query);
+		return $exec->result();
+	}
+	
+	public function getByNimi($firstname,$lastname){
+		$query = "SELECT * FROM v_kandidaadid WHERE firstName = '$firstname' AND lastName = '$lastname'";
 		$exec = $this->db->query($query);
 		return $exec->result();
 	}

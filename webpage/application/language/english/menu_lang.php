@@ -65,3 +65,4 @@ $lang['allcand'] = 'All candidates';
 $lang['chooseregion'] = 'Choose region';
 $lang['chooseparty'] = 'Choose party';
 $lang['choosegender'] = 'Choose gender';
+$lang['choosecandidate'] = 'Choose candidate';

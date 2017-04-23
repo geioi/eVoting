@@ -2,17 +2,29 @@ $(document).ready(function() {
    $("#all").trigger('click');
 });
 
-function numberOfRows(nr){
-	console.log(valik + " - " + tyyp);
-}
-
 var juurde = 5;
 
-function showCandidates(kandidaatideArray, pikkus){
+function showCandidates(kandidaatideArray, pikkus, häälteUuendus){
 	
 	$('#nupp').hide();
 
+	var keel = document.getElementById("keel").value;
 	var kandidaadid = kandidaatideArray
+	var haalteArv = 0;
+	
+	for (var i = 0; i < kandidaadid.length; i++) {
+		haalteArv += parseInt(kandidaadid[i]['votes']);
+	}
+	
+	if (häälteUuendus){
+		if (keel === "estonian") {
+			document.getElementById("haal").innerHTML = "Hääli kokku antud kandidaatide seas: " + haalteArv;
+		}
+		else{
+			document.getElementById("haal").innerHTML = "Total votes amongst listed candidates: " + haalteArv;
+		}
+	}
+	
 	
 	var eesnimed = new Array;
 	var perenimed = new Array
@@ -58,18 +70,24 @@ function showCandidates(kandidaatideArray, pikkus){
 	row.appendChild(maakondHeader);
 	row.appendChild(parteiHeader);
 	row.appendChild(häälHeader);
-		
-	eesnimiHeader.appendChild(document.createTextNode("Eesnimi"));
-	perenimiHeader.appendChild(document.createTextNode("Perekonna nimi"));
-	maakondHeader.appendChild(document.createTextNode("Maakond"));
-	parteiHeader.appendChild(document.createTextNode("Partei"));
-	häälHeader.appendChild(document.createTextNode("Hääli"));
+	
+	if (keel === "estonian") {
+		eesnimiHeader.appendChild(document.createTextNode("Eesnimi"));
+		perenimiHeader.appendChild(document.createTextNode("Perekonna nimi"));
+		maakondHeader.appendChild(document.createTextNode("Maakond"));
+		parteiHeader.appendChild(document.createTextNode("Partei"));
+		häälHeader.appendChild(document.createTextNode("Hääli"));
+	}
+	else{
+		eesnimiHeader.appendChild(document.createTextNode("First Name"));
+		perenimiHeader.appendChild(document.createTextNode("Last Name"));
+		maakondHeader.appendChild(document.createTextNode("County"));
+		parteiHeader.appendChild(document.createTextNode("Party"));
+		häälHeader.appendChild(document.createTextNode("Votes"));
+	}
 	table.appendChild(row);
 	
 	var i = 0;
-	
-	console.log(eesnimed);
-	console.log(pikkus);
 	
 	while (i < pikkus && i < eesnimed.length){
 		
@@ -126,7 +144,6 @@ function showCandidates(kandidaatideArray, pikkus){
 		häälLahter.appendChild(hääl);
 		
 		table.appendChild(row);
-		//table.appendChild(document.createElement("/TR"));	
 		
 		i++
 	}
@@ -142,7 +159,7 @@ function showCandidates(kandidaatideArray, pikkus){
 				kandidaadid.push(maakonnad);
 				kandidaadid.push(parteid);
 				kandidaadid.push(hääled);
-				showCandidates(kandidaadid,pikkus+juurde);
+				showCandidates(kandidaadid,pikkus+juurde, false);
 				
 			});
 			

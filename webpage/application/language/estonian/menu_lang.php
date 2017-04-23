@@ -65,5 +65,5 @@ $lang['allcand'] = 'Kõik kandidaadid';
 $lang['chooseregion'] = 'Vali regioon';
 $lang['chooseparty'] = 'Vali erakond';
 $lang['choosegender'] = 'Vali sugu';
-
+$lang['choosecandidate'] = 'Vali kandidaat';
 
