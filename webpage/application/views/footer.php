@@ -7,3 +7,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<a href="<?php echo base_url(); ?>index.php/sitemap"><?php echo lang("sitemap"); ?></a>
 	</div>
 </div>
+</body>
+</html>

@@ -64,6 +64,3 @@
 </div>
 
 <input type="hidden" name="keel" id="keel" value="<?php echo $_SESSION['site_lang']; ?>" />
-
-</body>
-</html>

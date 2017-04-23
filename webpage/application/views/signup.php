@@ -44,6 +44,3 @@
 	<input type="submit" name="submit" value="<?php echo lang('reg_btn'); ?>">
 </form>
 </div>
-
-</body>
-</html>

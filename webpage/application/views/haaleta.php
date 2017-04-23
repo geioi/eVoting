@@ -19,5 +19,3 @@
 	<?php } ?>
 	
 </div>
-</body>
-</html>

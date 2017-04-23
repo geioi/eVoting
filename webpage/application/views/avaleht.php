@@ -124,7 +124,6 @@ foreach ($xml->children() as $jaoskond) {
                 <input type="submit" value="Edasi panga lehele" />
         </form>
   </div>
-</body>
-</html>
+
 
 
