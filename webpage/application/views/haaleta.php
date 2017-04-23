@@ -3,8 +3,8 @@
 			<h3><?php echo lang("voted"); ?></h3>
 			<button type="button" class="btn btn-default" id="cancel" value="<?php echo $_SESSION['person_id']; ?>"><?php echo lang("cancelvote"); ?></button>
 	<?php  } else {	?>
-			<h3><?php echo lang("voting"); ?></h3>
 			<form id="target" action="#">
+				<label for="cand"><?php echo lang("voting"); ?></label>
 				<select class="form-control" name="kandidaadid" id="cand" style="height:34px;width:200px">	
 					<option selected disabled><?php echo lang("choosecand"); ?></option>
 					<?php foreach($kandidaadid as $kandidaat) : ?>		

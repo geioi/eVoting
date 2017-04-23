@@ -57,7 +57,7 @@
 	<br><br>
 	
   <div class="table-responsive" id="resp">
-            <table class="table" id="tabel">
+            <table class="table" id="tabel" style="table-layout:fixed;">
             </table>
 		</div>	
 	<button type="button" class="btn btn-primary btn-block" id = "nupp"><?php echo lang("loadmore"); ?></button>

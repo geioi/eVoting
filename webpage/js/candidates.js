@@ -49,14 +49,8 @@ function showCandidates(kandidaatideArray, pikkus, häälteUuendus){
 		hääled.push.apply(hääled, kandidaadid[4]);	
 	}
 			
-	var elem = document.getElementById("tabel");
-	elem.parentNode.removeChild(elem);
-	
-	var container = document.getElementById("resp");
-	var table = document.createElement("TABLE");
-	table.setAttribute("id", "tabel");
-	table.setAttribute("class", "table");
-	container.appendChild(table);
+	var table = document.getElementById("tabel");
+	table.innerHTML = "";
 	
 	var row = document.createElement("TR");
 	var eesnimiHeader = document.createElement("TH");
