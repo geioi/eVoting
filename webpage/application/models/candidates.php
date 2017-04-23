@@ -9,6 +9,12 @@ class candidates extends CI_Model {
 		return $exec->result();
 	}
 	
+	public function getDataDesc() {
+		$query = "SELECT * FROM v_votes";
+		$exec = $this->db->query($query);
+		return $exec->result();
+	}
+	
 	public function getTotalCandidates() {
 		$mysqli = new mysqli("localhost", "root", "", "evoting");
 		$query = "SELECT COUNT(*) from v_kandidaadid";
@@ -18,13 +24,13 @@ class candidates extends CI_Model {
 	}
 	
 	public function getParteid(){
-		$query = "SELECT DISTINCT partei FROM v_kandidaadid";
+		$query = "SELECT DISTINCT partei FROM v_votes";
 		$exec = $this->db->query($query);
 		return $exec->result();
 	}
 	
 	public function getMaakonnad(){
-		$query = "SELECT DISTINCT maakond FROM v_kandidaadid";
+		$query = "SELECT DISTINCT maakond FROM v_votes";
 		$exec = $this->db->query($query);
 		return $exec->result();
 	}
@@ -36,13 +42,13 @@ class candidates extends CI_Model {
 	}
 	
 	public function getByMaakond($maakond){
-		$query = "SELECT * FROM v_kandidaadid WHERE maakond = '$maakond'";
+		$query = "SELECT * FROM v_votes WHERE maakond = '$maakond'";
 		$exec = $this->db->query($query);
 		return $exec->result_array();
 	}
 	
 	public function getByPartei($partei) {
-		$query = "SELECT * FROM v_kandidaadid WHERE partei = '$partei'";
+		$query = "SELECT * FROM v_votes WHERE partei = '$partei'";
 		$exec = $this->db->query($query);
 		return $exec->result_array();
 	}

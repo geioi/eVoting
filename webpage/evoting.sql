@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Loomise aeg: Aprill 09, 2017 kell 05:14 PM
+-- Loomise aeg: Aprill 23, 2017 kell 01:06 PM
 -- Serveri versioon: 10.1.21-MariaDB
 -- PHP versioon: 5.6.30
 
@@ -61,9 +61,13 @@ CREATE TABLE `kandidaadid` (
 
 INSERT INTO `kandidaadid` (`id`, `firstName`, `lastName`, `partei`, `maakond`, `votes`, `person_id`) VALUES
 (2, 'Jüri', 'Muri', 'Kollane Partei', 'Harjumaa', 0, '38410101010'),
-(3, 'Mari', 'Kuri', 'Punased', 'Harjumaa', 2, '12345678901'),
-(4, 'Random', 'Nimi', 'Punased', 'Tartumaa', 3, '23456789023'),
-(6, 'Ivar', 'Kalamees', 'kollased', 'sinised', 5, '');
+(3, 'Mari', 'Kuri', 'Punased', 'Harjumaa', 5, '12345678901'),
+(4, 'Random', 'Nimi', 'Punased', 'Tartumaa', 4, '23456789023'),
+(6, 'Michele', 'Obama', 'Vaba', 'USA', 4, '464646364'),
+(7, 'Barack', 'Obama', 'Vaba', 'USA', 100, '4563567235'),
+(8, 'Edgar', 'Savisaar', 'Kesk', 'Harjumaa', 1325, '47456546'),
+(9, 'George', 'Bush', 'Demo', 'USA', 64, '5235235246'),
+(10, 'Donald', 'Trump', 'Demo', 'USA', 24, '64564536');
 
 -- --------------------------------------------------------
 
@@ -95,7 +99,8 @@ INSERT INTO `users` (`id`, `person_id`, `password`, `email`, `firstname`, `lastn
 (6, '38410101010', 'e367f29cc9e99ce6ef6aabb3c9c9a320991d0b59e132ae2d4bf1043299b676958d1dd69b8e433b167c89537894c49c3496534f29b0f69b8f77a3da350576e53c', 'lauri.ratsep@ut.ee', 'L', 'R', '12/12/1212', 'Karu', 0),
 (7, '39515345234', '5fda97a131fa4746fa835caefeb6f6d64f2b12ff5a4e42e840639af3dd747cf3627fec8039733e5a77d9b99aba473dae4b08134bb4e39006dcd06cec90c76371', 'ivarkala@hotmail.com', 'ivar', 'kala', '25/5/1995', 'Mees', 0),
 (9, '39515345235', 'a394dd65563bc675db1a11d2d611c945292700319e83439c10404f20ddfb89306efef54f508d176ac2c03a5240395fed200ab88d742ee6e9718f72fe3ee6f96c', 'ivar@ut.ee', 'ivar', 'kala', '25/05/1996', 'helikopter', 0),
-(10, '1279935575423507', '', 'ivarkala@hotmail.com', 'Ivar', 'Kalamees', '', 'mees', 0);
+(10, '1279935575423507', '', 'ivarkala@hotmail.com', 'Ivar', 'Kalamees', '', 'mees', 0),
+(11, '39515345239', 'a394dd65563bc675db1a11d2d611c945292700319e83439c10404f20ddfb89306efef54f508d176ac2c03a5240395fed200ab88d742ee6e9718f72fe3ee6f96c', 'iva2r@ut.ee', 'ivaaar', 'kalaaaaa', '25/05/1945', 'Naine', 1);
 
 -- --------------------------------------------------------
 
@@ -130,6 +135,21 @@ CREATE TABLE `v_kandidaadid` (
 -- --------------------------------------------------------
 
 --
+-- Sise-vaate struktuur `v_votes`
+-- (Tegelik vaade on allpool)
+--
+CREATE TABLE `v_votes` (
+`id` int(11)
+,`firstName` varchar(50)
+,`lastName` varchar(50)
+,`partei` varchar(50)
+,`maakond` varchar(50)
+,`votes` int(10)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Vaate struktuur `v_candgender`
 --
 DROP TABLE IF EXISTS `v_candgender`;
@@ -144,6 +164,15 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `v_kandidaadid`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_kandidaadid`  AS  select `kandidaadid`.`id` AS `id`,`kandidaadid`.`firstName` AS `firstName`,`kandidaadid`.`lastName` AS `lastName`,`kandidaadid`.`partei` AS `partei`,`kandidaadid`.`maakond` AS `maakond`,`kandidaadid`.`votes` AS `votes` from `kandidaadid` order by `kandidaadid`.`id` ;
+
+-- --------------------------------------------------------
+
+--
+-- Vaate struktuur `v_votes`
+--
+DROP TABLE IF EXISTS `v_votes`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_votes`  AS  select `kandidaadid`.`id` AS `id`,`kandidaadid`.`firstName` AS `firstName`,`kandidaadid`.`lastName` AS `lastName`,`kandidaadid`.`partei` AS `partei`,`kandidaadid`.`maakond` AS `maakond`,`kandidaadid`.`votes` AS `votes` from `kandidaadid` order by `kandidaadid`.`votes` desc ;
 
 --
 -- Indeksid tõmmistatud tabelitele
@@ -174,7 +203,7 @@ ALTER TABLE `kandidaadid`
 -- AUTO_INCREMENT tabelile `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

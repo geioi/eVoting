@@ -1,30 +1,42 @@
+$(document).ready(function() {
+   $("#all").trigger('click');
+});
+
 function numberOfRows(nr){
 	console.log(valik + " - " + tyyp);
 }
 
-function showCandidates(kandidaatideArray){
+var juurde = 5;
+
+function showCandidates(kandidaatideArray, pikkus){
+	
+	$('#nupp').hide();
 
 	var kandidaadid = kandidaatideArray
-	//console.log(kandidaadid);
 	
 	var eesnimed = new Array;
 	var perenimed = new Array
 	var maakonnad = new Array;
 	var parteid = new Array;
-	var hääled = new Array;
+	var hääled = new Array; 
 	
-	for (var i = 0; i < kandidaadid.length; i++){
-		//IDd.push(kandidaadid[i]['id']);
-		eesnimed.push(kandidaadid[i]['firstName']);
-		perenimed.push(kandidaadid[i]['lastName']);
-		maakonnad.push(kandidaadid[i]['maakond']);
-		parteid.push(kandidaadid[i]['partei']);
-		hääled.push(kandidaadid[i]['votes']);
+	if (pikkus <= juurde) {
+		for (var i = 0; i < kandidaadid.length; i++){
+			//IDd.push(kandidaadid[i]['id']);
+			eesnimed.push(kandidaadid[i]['firstName']);
+			perenimed.push(kandidaadid[i]['lastName']);
+			maakonnad.push(kandidaadid[i]['maakond']);
+			parteid.push(kandidaadid[i]['partei']);
+			hääled.push(kandidaadid[i]['votes']);
+		}
+	}else {
+		eesnimed.push.apply(eesnimed, kandidaadid[0]);
+		perenimed.push.apply(perenimed, kandidaadid[1]);
+		maakonnad.push.apply(maakonnad, kandidaadid[2]);
+		parteid.push.apply(parteid, kandidaadid[3]);
+		hääled.push.apply(hääled, kandidaadid[4]);	
 	}
-	
-	//console.log(eesnimed, perenimed, maakonnad);
-
-	
+			
 	var elem = document.getElementById("tabel");
 	elem.parentNode.removeChild(elem);
 	
@@ -40,13 +52,13 @@ function showCandidates(kandidaatideArray){
 	var maakondHeader = document.createElement("TH");
 	var parteiHeader = document.createElement("TH");
 	var häälHeader = document.createElement("TH");
-	
+
 	row.appendChild(eesnimiHeader);
 	row.appendChild(perenimiHeader);
 	row.appendChild(maakondHeader);
 	row.appendChild(parteiHeader);
 	row.appendChild(häälHeader);
-	
+		
 	eesnimiHeader.appendChild(document.createTextNode("Eesnimi"));
 	perenimiHeader.appendChild(document.createTextNode("Perekonna nimi"));
 	maakondHeader.appendChild(document.createTextNode("Maakond"));
@@ -54,7 +66,12 @@ function showCandidates(kandidaatideArray){
 	häälHeader.appendChild(document.createTextNode("Hääli"));
 	table.appendChild(row);
 	
-	for (var i = 0; i < eesnimed.length; i++){
+	var i = 0;
+	
+	console.log(eesnimed);
+	console.log(pikkus);
+	
+	while (i < pikkus && i < eesnimed.length){
 		
 		row = document.createElement("TR");
 		
@@ -109,9 +126,29 @@ function showCandidates(kandidaatideArray){
 		häälLahter.appendChild(hääl);
 		
 		table.appendChild(row);
-		//table.appendChild(document.createElement("/TR"));
+		//table.appendChild(document.createElement("/TR"));	
 		
+		i++
 	}
+	
+	if (pikkus < eesnimed.length) {	
+			
+			$('#nupp').show();
+			
+			$('#nupp').click(function() {
+				var kandidaadid = new Array;
+				kandidaadid.push(eesnimed);
+				kandidaadid.push(perenimed);
+				kandidaadid.push(maakonnad);
+				kandidaadid.push(parteid);
+				kandidaadid.push(hääled);
+				showCandidates(kandidaadid,pikkus+juurde);
+				
+			});
+			
+			
+			
+		}
 	
 }
 
