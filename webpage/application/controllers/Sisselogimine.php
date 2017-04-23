@@ -32,6 +32,7 @@ class Sisselogimine extends CI_Controller {
 				$_SESSION['userid'] = $nimi;
 				$_SESSION['email'] = $this->Login->getEmail($person_id);
 				$_SESSION['login'] = true;
+				$_SESSION['person_id'] = $person_id;
 				
 				if ($prev_loc == 'signup' || $prev_loc == ''){
 					$prev_loc = 'welcome';

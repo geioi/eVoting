@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Loomise aeg: Aprill 23, 2017 kell 01:06 PM
+-- Loomise aeg: Aprill 23, 2017 kell 05:02 PM
 -- Serveri versioon: 10.1.21-MariaDB
 -- PHP versioon: 5.6.30
 
@@ -24,8 +24,11 @@ DELIMITER $$
 --
 -- Toimingud
 --
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Mark_Voted` (IN `_email` VARCHAR(50))  MODIFIES SQL DATA
-UPDATE `users` SET `hasVoted`=1 WHERE `email`=`_email`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Cancel_Vote` (IN `_person_id` VARCHAR(20))  NO SQL
+UPDATE `users` SET `votedFor`= 0 WHERE `person_id`=`_person_id`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Mark_Voted` (IN `_person_id` VARCHAR(50), IN `_votedFor` INT(5) UNSIGNED)  NO SQL
+UPDATE `users` SET `votedFor`= `_votedFor` WHERE `person_id`=`_person_id`$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Register_Candidate` (IN `_id` INT(11), IN `_firstname` VARCHAR(50) CHARSET utf8, IN `_lastname` VARCHAR(50) CHARSET utf8, IN `_partei` VARCHAR(50) CHARSET utf8, IN `_maakond` VARCHAR(50), IN `_person_id` VARCHAR(20))  NO SQL
 INSERT INTO `kandidaadid`(`id`, `firstName`, `lastName`, `partei`, `maakond`, `person_id`) VALUES (_id, _firstname, _lastname, _partei, _maakond, _person_id)$$
@@ -33,6 +36,9 @@ INSERT INTO `kandidaadid`(`id`, `firstName`, `lastName`, `partei`, `maakond`, `p
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Register_FB_User` (IN `_id` VARCHAR(20), IN `_email` VARCHAR(100), IN `_firstname` VARCHAR(50), IN `_lastname` VARCHAR(50), IN `_gender` VARCHAR(10))  INSERT INTO `users` (`person_id`, `email`, `firstname`, `lastname`, `gender`) VALUES (_id, _email, _firstname, _lastname, _gender)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Register_User` (IN `_email` VARCHAR(100), IN `_firstname` VARCHAR(50), IN `_lastname` VARCHAR(50), IN `_person_id` VARCHAR(20), IN `_password` VARCHAR(128), IN `_birthdate` VARCHAR(50), IN `_gender` VARCHAR(50))  INSERT INTO `users`(`person_id`, `password`, `email`, `firstname`, `lastname`, `birthdate`, `gender`) VALUES (_person_id, _password, _email, _firstname, _lastname, _birthdate, _gender)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RemoveVote` (IN `_id` INT(20))  NO SQL
+UPDATE `kandidaadid` SET `votes`=`votes`-1 WHERE `id`=`_id`$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateVoteCount` (IN `_id` INT(11))  MODIFIES SQL DATA
 UPDATE `kandidaadid` SET `votes`=`votes`+1 WHERE `id`=`_id`$$
@@ -60,14 +66,14 @@ CREATE TABLE `kandidaadid` (
 --
 
 INSERT INTO `kandidaadid` (`id`, `firstName`, `lastName`, `partei`, `maakond`, `votes`, `person_id`) VALUES
-(2, 'Jüri', 'Muri', 'Kollane Partei', 'Harjumaa', 0, '38410101010'),
-(3, 'Mari', 'Kuri', 'Punased', 'Harjumaa', 5, '12345678901'),
-(4, 'Random', 'Nimi', 'Punased', 'Tartumaa', 4, '23456789023'),
-(6, 'Michele', 'Obama', 'Vaba', 'USA', 4, '464646364'),
-(7, 'Barack', 'Obama', 'Vaba', 'USA', 100, '4563567235'),
-(8, 'Edgar', 'Savisaar', 'Kesk', 'Harjumaa', 1325, '47456546'),
-(9, 'George', 'Bush', 'Demo', 'USA', 64, '5235235246'),
-(10, 'Donald', 'Trump', 'Demo', 'USA', 24, '64564536');
+(2, 'Jüri', 'Muri', 'Kollane Partei', 'Harjumaa', 1, '38410101010'),
+(3, 'Mari', 'Kuri', 'Punased', 'Harjumaa', 6, '12345678901'),
+(4, 'Random', 'Nimi', 'Punased', 'Tartumaa', 11, '23456789023'),
+(6, 'Michele', 'Obama', 'Demo', 'USA', 13, '464646364'),
+(7, 'Barack', 'Obama', 'Demo', 'USA', 106, '4563567235'),
+(8, 'Edgar', 'Savisaar', 'Kesk', 'Harjumaa', 1335, '47456546'),
+(9, 'George', 'Bush', 'Vaba', 'USA', 68, '5235235246'),
+(10, 'Donald', 'Trump', 'Vaba', 'USA', 28, '64564536');
 
 -- --------------------------------------------------------
 
@@ -84,14 +90,14 @@ CREATE TABLE `users` (
   `lastname` varchar(50) CHARACTER SET utf16 COLLATE utf16_estonian_ci NOT NULL,
   `birthdate` varchar(50) CHARACTER SET utf16 COLLATE utf16_estonian_ci NOT NULL,
   `gender` varchar(50) CHARACTER SET utf16 COLLATE utf16_estonian_ci NOT NULL,
-  `hasVoted` tinyint(1) NOT NULL DEFAULT '0'
+  `votedFor` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Andmete tõmmistamine tabelile `users`
 --
 
-INSERT INTO `users` (`id`, `person_id`, `password`, `email`, `firstname`, `lastname`, `birthdate`, `gender`, `hasVoted`) VALUES
+INSERT INTO `users` (`id`, `person_id`, `password`, `email`, `firstname`, `lastname`, `birthdate`, `gender`, `votedFor`) VALUES
 (1, '12345678901', 'testing', 'test@kasutaja.com', 'Test', 'Kasutaja', '17/02/1996', 'mees', 0),
 (2, '23456789023', 'ee26b0dd4af7e749aa1a8ee3c10ae9923f618980772e473f8819a5d4940e0db27ac185f8a0e1d5f84f88bc887fd67b143732c304cc5fa9ad8e6f57f50028a8ff', 'asd@d.com', 'Järjekordne', 'Test', '02/11/1997', 'Helikopter', 0),
 (4, '39602456194', 'e367f29cc9e99ce6ef6aabb3c9c9a320991d0b59e132ae2d4bf1043299b676958d1dd69b8e433b167c89537894c49c3496534f29b0f69b8f77a3da350576e53c', 'geio96@hotmail.com', 'Geio', 'Illus', '17/02/1996', 'Mees', 0),

@@ -9,8 +9,8 @@ class KandideeriHaaleta extends CI_Model {
 		return;
 	}
 	
-	public function checkIfVoted($email) {
-		$query = "SELECT `users`.`hasVoted` AS voted FROM users WHERE `users`.`email` = '$email'";
+	public function checkIfVoted($id) {
+		$query = "SELECT `users`.`votedFor` AS voted FROM users WHERE `users`.`person_id` = '$id'";
 		$exec = $this->db->query($query);
 		
 		foreach($exec->result() as $bool) {
@@ -24,14 +24,26 @@ class KandideeriHaaleta extends CI_Model {
 		return $exec->result();
 	}
 	
-	public function markVoted($email) {
-		$query = "CALL Mark_Voted('$email')";
+	public function markVoted($person_id, $votedFor) {
+		$query = "CALL Mark_Voted('$person_id', '$votedFor')";
 		$exec = $this->db->query($query);
 		return;
 	}
 	
 	public function updateVoteCount($id){
 		$query = "CALL UpdateVoteCount('$id')";
+		$exec = $this->db->query($query);
+		return;
+	}
+	
+	public function cancelVote($person_id) {
+		$query = "CALL Cancel_Vote('$person_id')";
+		$exec = $this->db->query($query);
+		return;
+	}
+	
+	public function removeVote($id) {
+		$query = "CALL RemoveVote('$id')";
 		$exec = $this->db->query($query);
 		return;
 	}
@@ -61,7 +73,7 @@ class KandideeriHaaleta extends CI_Model {
 	}
 	
 	public function getInfo($email){
-		$query = "SELECT `users`.`id` AS id,`users`.`firstname` AS firstname,`users`.`lastname` AS lastname, `users`.`hasVoted` AS voted, `users`.`person_id` AS person_id from users WHERE email = '$email'";
+		$query = "SELECT `users`.`id` AS id,`users`.`firstname` AS firstname,`users`.`lastname` AS lastname, `users`.`votedFor` AS voted, `users`.`person_id` AS person_id from users WHERE email = '$email'";
 		$exec = $this->db->query($query);
 		
 		return $exec->result();

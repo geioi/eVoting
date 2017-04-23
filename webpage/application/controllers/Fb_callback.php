@@ -47,6 +47,7 @@ class Fb_callback extends CI_Controller
 		if ($this->user->checkUser($user)) {
 			$_SESSION['userid'] = $user['name'];
 			$_SESSION['email'] = $user['email'];
+			$_SESSION['person_id'] = $user['id'];
 			$_SESSION['login'] = true;
 			if (isset($_SESSION['prev_loc'])) {
 				redirect($_SESSION['prev_loc']);

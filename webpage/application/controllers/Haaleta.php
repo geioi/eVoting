@@ -13,35 +13,52 @@ class Haaleta extends CI_Controller {
 			} 
 			
 			$_SESSION['prev_loc'] = 'haaleta';
-			$title['title'] = lang('title_vote');
+			$data['title'] = lang('title_vote');
 			
             if (!isset($_SESSION['login'])){	
 				$_SESSION['message'] = lang('please_log');
                 header ("Location: login");
             }
 			else{
-				$this->load->view('loggedinheader',$title);
-				$this->load->view('haaleta');
-				$this->load->view('footer');
+				if ($this->checkVote($_SESSION['person_id'])) {
+					$data['voted'] = true;
+				}else {
+					$data['voted'] = false;
+				}
+			
+			$data['vote'] = $this->KandideeriHaaleta->checkIfVoted($_SESSION['person_id']);
+				
+			$this->load->model('candidates');
+			$data['kandidaadid'] = $this->candidates->getData();
+			
+			$this->load->view('loggedinheader',$data);
+			$this->load->view('haaleta');
+			$this->load->view('footer');		
 			}
 		
 	}
 	
-	public function checkvote(){
+	public function checkVote($id){
 		$this->load->model('KandideeriHaaleta');
-		if($this->KandideeriHaaleta->checkIfVoted($_POST['email']) == '0') {
-			if (!empty($this->KandideeriHaaleta->checkCandidates($_POST['id']))){
-				$this->KandideeriHaaleta->markVoted($_POST['email']);
-				$this->KandideeriHaaleta->updateVoteCount($_POST['id']);
-				echo false;
-			} 
-			else{
-				echo true;
-			}
-		}
-		else{
-			echo true;
+		if($this->KandideeriHaaleta->checkIfVoted($id) == '0') {
+			return false;
+		}else {
+			return true;
 		}
 	}
 	
-}
+	public function cancelVote() {
+		$this->load->model('KandideeriHaaleta');
+		$votedFor = $this->KandideeriHaaleta->checkIfVoted($_POST['id']);
+		$this->KandideeriHaaleta->RemoveVote($votedFor);
+		$this->KandideeriHaaleta->cancelVote($_POST['id']);
+	}
+	
+	public function handVote() {
+		$this->load->model('KandideeriHaaleta');
+		$this->KandideeriHaaleta->markVoted($_POST['id'],$_POST['vote']);
+		$this->KandideeriHaaleta->updateVoteCount($_POST['vote']);
+	}
+	
+}	
+		
