@@ -17,7 +17,7 @@
 		<input type="password" id="parool" name="password" value="">
 		</label>
 		<br><br>
-		<input type="submit" value="<?php echo lang('log_btn'); ?>">
+		<input type="submit" id='submit' value="<?php echo lang('log_btn'); ?>">
 	</form>
 	<hr>
 	

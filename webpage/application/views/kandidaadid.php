@@ -1,7 +1,7 @@
 
 <div class="container">
         <br>
-        <h3><?php echo lang('candidates'); ?></h3>
+        <h3 id='kandidaadid'><?php echo lang('candidates'); ?></h3>
         <div class="table-responsive">
             <table id="myTable" class="table">
                 <tr>
