@@ -48,16 +48,20 @@ class Haaleta extends CI_Controller {
 	}
 	
 	public function cancelVote() {
-		$this->load->model('KandideeriHaaleta');
-		$votedFor = $this->KandideeriHaaleta->checkIfVoted($_POST['id']);
-		$this->KandideeriHaaleta->RemoveVote($votedFor);
-		$this->KandideeriHaaleta->cancelVote($_POST['id']);
+		if ($this->checkVote($_POST['id'])) {
+			$this->load->model('KandideeriHaaleta');
+			$votedFor = $this->KandideeriHaaleta->checkIfVoted($_POST['id']);
+			$this->KandideeriHaaleta->RemoveVote($votedFor);
+			$this->KandideeriHaaleta->cancelVote($_POST['id']);
+		}
 	}
 	
 	public function handVote() {
-		$this->load->model('KandideeriHaaleta');
-		$this->KandideeriHaaleta->markVoted($_POST['id'],$_POST['vote']);
-		$this->KandideeriHaaleta->updateVoteCount($_POST['vote']);
+		if (!$this->checkVote($_POST['id'])) {
+			$this->load->model('KandideeriHaaleta');
+			$this->KandideeriHaaleta->markVoted($_POST['id'],$_POST['vote']);
+			$this->KandideeriHaaleta->updateVoteCount($_POST['vote']);
+		}
 	}
 	
 }	

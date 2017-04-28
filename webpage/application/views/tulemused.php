@@ -63,4 +63,4 @@
 	<button type="button" class="btn btn-primary btn-block" id = "nupp"><?php echo lang("loadmore"); ?></button>
 </div>
 
-<input type="hidden" name="keel" id="keel" value="<?php echo $_SESSION['site_lang']; ?>" />
+<input type="hidden" name="keel" id="keel" value="<?php echo $keel; ?>" />

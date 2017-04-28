@@ -12,7 +12,11 @@ class Tulemused extends CI_Controller {
 		$_SESSION['prev_loc'] = 'tulemused';
 		$title['title'] = lang('title_results');
 		$this->load->model('candidates');
-		$data['keel'] = $_SESSION['site_lang'];
+		if (!isset($_SESSION["site_lang"])) {
+			$data['keel'] = "estonian";
+		}else {
+			$data['keel'] = $_SESSION["site_lang"];
+		}
 		$data['maakonnad'] = $this->candidates->getMaakonnad();
 		$data['parteid'] = $this->candidates->getParteid();
 		$data['genderid'] = $this->candidates->getGender();
