@@ -1,7 +1,7 @@
 <div class="container">
 	<?php if($voted) {		?>
 			<h3><?php echo lang("voted"); ?></h3>
-			<button type="button" class="btn btn-default" id="cancel" value="<?php echo $_SESSION['person_id']; ?>"><?php echo lang("cancelvote"); ?></button>
+			<button type="button" class="btn btn-default" id="cancel"><?php echo lang("cancelvote"); ?></button>
 	<?php  } else {	?>
 			<form id="target" action="#">
 				<label for="cand"><?php echo lang("voting"); ?></label>
@@ -12,7 +12,7 @@
 					<?php endforeach ?>
 				</select>
 				<br>
-				<button type="button" class="btn btn-default" id="vote" value="<?php echo $_SESSION['person_id']; ?>"><?php echo lang("vote_btn"); ?></button>
+				<button type="button" class="btn btn-default" id="vote"><?php echo lang("vote_btn"); ?></button>
 			</form>
 
 	<?php } ?>

@@ -48,18 +48,18 @@ class Haaleta extends CI_Controller {
 	}
 	
 	public function cancelVote() {
-		if ($this->checkVote($_POST['id']) && $_POST['id'] == $_SESSION['person_id']) {
+		if ($this->checkVote($_SESSION['person_id'])) {
 			$this->load->model('KandideeriHaaleta');
-			$votedFor = $this->KandideeriHaaleta->checkIfVoted($_POST['id']);
+			$votedFor = $this->KandideeriHaaleta->checkIfVoted($_SESSION['person_id']);
 			$this->KandideeriHaaleta->RemoveVote($votedFor);
-			$this->KandideeriHaaleta->cancelVote($_POST['id']);
+			$this->KandideeriHaaleta->cancelVote($_SESSION['person_id']);
 		}
 	}
 	
 	public function handVote() {
-		if (!$this->checkVote($_POST['id']) && $_POST['id'] == $_SESSION['person_id']) {
+		if ($this->checkVote($_SESSION['person_id'])) {
 			$this->load->model('KandideeriHaaleta');
-			$this->KandideeriHaaleta->markVoted($_POST['id'],$_POST['vote']);
+			$this->KandideeriHaaleta->markVoted($_SESSION['person_id'],$_POST['vote']);
 			$this->KandideeriHaaleta->updateVoteCount($_POST['vote']);
 		}
 	}
