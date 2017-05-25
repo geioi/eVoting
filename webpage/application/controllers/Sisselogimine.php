@@ -19,10 +19,11 @@ class Sisselogimine extends CI_Controller {
 		$password = $_POST['password'];
 		
 		// to prevent mysql injection
-		//$person_id = stripcslashes($person_id);
-		//$password = stripcslashes($password);
-		//$person_id = mysql_real_escape_string($person_id);
-		//$password = mysql_real_escape_string($password);
+		$person_id = stripcslashes($person_id);
+		$password = stripcslashes($password);
+		$mysqli = new mysqli("localhost", "evotingcsut_admin", "very1hard", "evotingcsut_kandidaadid");
+		$person_id = mysqli_real_escape_string($mysqli,$person_id);
+		$password = mysqli_real_escape_string($mysqli,$password);
 		$password = hash('sha512', $password);
 		
 		if (!empty($person_id) && !empty($password)){
