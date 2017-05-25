@@ -57,7 +57,7 @@ class Haaleta extends CI_Controller {
 	}
 	
 	public function handVote() {
-		if ($this->checkVote($_SESSION['person_id'])) {
+		if (!$this->checkVote($_SESSION['person_id'])) {
 			$this->load->model('KandideeriHaaleta');
 			$this->KandideeriHaaleta->markVoted($_SESSION['person_id'],$_POST['vote']);
 			$this->KandideeriHaaleta->updateVoteCount($_POST['vote']);
